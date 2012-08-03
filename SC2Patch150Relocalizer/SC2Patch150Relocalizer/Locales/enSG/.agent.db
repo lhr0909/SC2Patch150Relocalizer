@@ -1,0 +1,45 @@
+{
+	"uid" : "s2_ensg",
+	"config" : {
+		"expansion_level" : 1.000000,
+		"migration_required_build" : 21029.000000,
+		"ptr" : false,
+		"beta" : false,
+		"supports_multibox" : false,
+		"fullpath_hash" : true,
+		"archive_override_subpath" : "",
+		"data_dir" : "Updates",
+		"switcher" : true,
+		"use_sparse" : false,
+		"patch_url" : "http://enSG.patch.battle.net:1119/patch",
+		"priority_file_layout" : "Retail",
+		"product" : "S2",
+		"updater_product" : "s2_patch",
+		"update_identifier" : "s2-update-",
+		"update_method" : "patch on demand",
+		"update_regex" : "(?P<prefix>s2-update-(?P<dataset>\\w+))-(?P<build>\\d+)\\.mpq$",
+		"torrent_file_path" : "StarCraft II.tfil",
+		"manifest_file_path" : "StarCraft II.mfil",
+		"priority_file_path" : "StarCraft II.pfil",
+		"binary_version_path" : "Support/SC2Switcher.exe",
+		"binary_launch_path" : "Support/SC2Switcher.exe",
+		"binary_launch_path64" : "",
+		"shortcut_target_path" : "",
+		"run64bit" : false,
+		"uninstall_path" : "C:\\Program Files (x86)\\Common Files\\Blizzard Entertainment\\StarCraft II (2)\\Uninstall.exe",
+		"alternate" : false,
+		"supports_offline" : true,
+		"installed_locales" : [
+			"enSG"
+		],
+		"display_locales" : [
+			"enSG"
+		],
+		"launch_arguments" : [
+			"-launch",
+			"-uid",
+			"s2_enSG"
+		],
+		"preinstalled" : true
+	}
+}
