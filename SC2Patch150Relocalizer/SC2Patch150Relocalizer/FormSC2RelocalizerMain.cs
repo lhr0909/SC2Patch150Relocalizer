@@ -15,17 +15,10 @@ namespace SimonsRelocalizer
 
         private void buttonRelocalize_Click(object sender, EventArgs e)
         {
-            LocaleChanger.ChangeAgentDB(Program.currentLocale, Program.newLocale);
-            LocaleChanger.ChangeLauncherDB(Program.currentLocale, Program.newLocale);
-            LocaleChanger.ChangeProductSC2Archive(Program.newLocale);
-            LocaleChanger.ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
+            LocaleChanger.RunRelocalize();
             if (buttonRelocalize.Text == Resources.buttonRelocalizeText)
             {
-                var message = Resources.relocalizationFinishedMessage;
-                message = message.Replace("aaaa", Program.currentLocale);
-                message = message.Replace("bbbb", Program.newLocale);
-                message = message.Replace("cccc", Program.currentAsset);
-                message = message.Replace("dddd", Program.newAsset);
+                var message = CreateRelocalizeMessage();
                 MessageBox.Show(message);
             }
             else
@@ -55,15 +48,13 @@ namespace SimonsRelocalizer
             var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
             if (updatesAvaiable)
             {
-                labelUpdate.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
-                labelUpdate.ForeColor = System.Drawing.Color.Blue;
-                labelUpdate.Cursor = Cursors.Hand;
+                versionsToolStripMenuItem.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
+                versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
             }
             else
             {
-                labelUpdate.Text = Resources.relocalizerUpToDateText;
-                labelUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
-                labelUpdate.Cursor = Cursors.Arrow;
+                versionsToolStripMenuItem.Text = Resources.relocalizerUpToDateText;
+                versionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             }
         }
 
@@ -137,17 +128,47 @@ namespace SimonsRelocalizer
             }
         }
 
+        private static string CreateRelocalizeMessage()
+        {
+            var message = Resources.relocalizationFinishedMessage;
+            message = message.Replace("aaaa", Program.currentLocale);
+            message = message.Replace("bbbb", Program.newLocale);
+            message = message.Replace("cccc", Program.currentAsset);
+            message = message.Replace("dddd", Program.newAsset);
+            return message;
+        }
+
         private void ChangeCheckBoxValue()
         {
             chkLaunchSC2.Checked = Settings.Default.RunSC2AfterRelocalize;
         }
 
-        private void labelUpdate_Click(object sender, EventArgs e)
+        private void versionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (labelUpdate.ForeColor == System.Drawing.Color.Blue)
+            if (versionsToolStripMenuItem.ForeColor == System.Drawing.Color.Blue)
             {
-                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() +".zip");
+                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() + ".zip");
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Resources.aboutMessage);
+        }
+
+        private void theProjectPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/lhr0909/SC2Patch150Relocalizer");
+        }
+
+        private void teamliquidPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.teamliquid.net/forum/viewmessage.php?topic_id=357860");
         }
     }
 }

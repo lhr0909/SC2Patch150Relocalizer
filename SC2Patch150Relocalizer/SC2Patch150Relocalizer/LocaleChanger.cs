@@ -7,14 +7,21 @@ namespace SimonsRelocalizer
     class LocaleChanger
     {
 
+        public static void RunRelocalize()
+        {
+            ChangeAgentDB(Program.currentLocale, Program.newLocale);
+            ChangeLauncherDB(Program.currentLocale, Program.newLocale);
+            ChangeProductSC2Archive(Program.newLocale);
+            ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
+        }
+
         public static void ChangeAgentDB(string originalLanguage, string relocalizeLanguage)
         {
             //Change .agent.db
             var filePath = Settings.Default.SC2Location + ".agent.db";
             BackupFile(filePath);
             var text = File.ReadAllText(filePath);
-            text = text.Replace(originalLanguage, relocalizeLanguage);
-            text = text.Replace(originalLanguage.ToLower(), relocalizeLanguage.ToLower());
+            text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
             File.WriteAllText(filePath, text);
         }
 
@@ -24,7 +31,7 @@ namespace SimonsRelocalizer
             var filePath = Settings.Default.SC2Location + "Launcher.db";
             BackupFile(filePath);
             var text = File.ReadAllText(filePath);
-            text = text.Replace(originalLanguage, relocalizeLanguage);
+            text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
             File.WriteAllText(filePath, text);
         }
 
@@ -71,6 +78,26 @@ namespace SimonsRelocalizer
         {
             var filePath = Settings.Default.SC2Location + "Mods\\Core.SC2Mod\\" + asset + ".SC2Data";
             return File.Exists(filePath);
+        }
+
+        private static string CheckAndReplaceTextInFile(string originalLanguage, string relocalizeLanguage, string text)
+        {
+            if (text.Contains(originalLanguage) || text.Contains(originalLanguage.ToLower()))
+            {
+                text = text.Replace(originalLanguage, relocalizeLanguage);
+                text = text.Replace(originalLanguage.ToLower(), relocalizeLanguage.ToLower());
+            }
+            else
+            {
+                //make sure that the value is correct in those files
+                foreach (string value in Program.languageList)
+                {
+                    var locale = value.Substring(0, 4);
+                    text = text.Replace(locale, relocalizeLanguage);
+                    text = text.Replace(locale.ToLower(), relocalizeLanguage.ToLower());
+                }
+            }
+            return text;
         }
 
         private static void BackupFile(string filePath)
