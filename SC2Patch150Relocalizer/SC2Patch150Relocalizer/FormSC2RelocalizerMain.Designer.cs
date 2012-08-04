@@ -39,12 +39,12 @@
             this.browserSC2VarFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamliquidPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theProjectPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.versionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teamliquidPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,6 +175,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.aboutToolStripMenuItem.Text = "&About";
             // 
+            // teamliquidPageToolStripMenuItem
+            // 
+            this.teamliquidPageToolStripMenuItem.Name = "teamliquidPageToolStripMenuItem";
+            this.teamliquidPageToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.teamliquidPageToolStripMenuItem.Text = "&Teamliquid page";
+            this.teamliquidPageToolStripMenuItem.Click += new System.EventHandler(this.teamliquidPageToolStripMenuItem_Click);
+            // 
             // theProjectPageToolStripMenuItem
             // 
             this.theProjectPageToolStripMenuItem.Name = "theProjectPageToolStripMenuItem";
@@ -208,13 +215,6 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // teamliquidPageToolStripMenuItem
-            // 
-            this.teamliquidPageToolStripMenuItem.Name = "teamliquidPageToolStripMenuItem";
-            this.teamliquidPageToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.teamliquidPageToolStripMenuItem.Text = "&Teamliquid page";
-            this.teamliquidPageToolStripMenuItem.Click += new System.EventHandler(this.teamliquidPageToolStripMenuItem_Click);
-            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +230,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(582, 282);
+            this.MinimumSize = new System.Drawing.Size(582, 282);
             this.Name = "FormSC2RelocalizerMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer ";
