@@ -62,6 +62,12 @@ namespace SC2Patch150Relocalizer
             File.WriteAllText(sc2VarLocation, text);
         }
 
+        public static bool CheckIfAssetExists(string asset)
+        {
+            var filePath = Settings.Default.SC2Location + "Mods\\Core.SC2Mod\\" + asset + ".SC2Data";
+            return File.Exists(filePath);
+        }
+
         private static void BackupFile(string filePath)
         {
             //make backups up to 5 previous changes

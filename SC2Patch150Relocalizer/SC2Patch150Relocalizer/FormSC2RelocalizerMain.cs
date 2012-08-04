@@ -10,7 +10,6 @@ namespace SC2Patch150Relocalizer
     {
         public FormSC2RelocalizerMain()
         {
-            //init
             InitializeComponent();
         }
 
@@ -20,7 +19,19 @@ namespace SC2Patch150Relocalizer
             LocaleChanger.ChangeLauncherDB(Program.currentLocale, Program.newLocale);
             LocaleChanger.ChangeProductSC2Archive(Program.newLocale);
             LocaleChanger.ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
-            MessageBox.Show("Relocalization from "+ Program.currentLocale + " to " + Program.newLocale + " with asset from " + Program.currentAsset + " to " + Program.newAsset + " is finished! Enjoy!");
+            if (buttonRelocalize.Text == Resources.buttonRelocalizeText)
+            {
+                var message = Resources.relocalizationFinishedMessage;
+                message = message.Replace("aaaa", Program.currentLocale);
+                message = message.Replace("bbbb", Program.newLocale);
+                message = message.Replace("cccc", Program.currentAsset);
+                message = message.Replace("dddd", Program.newAsset);
+                MessageBox.Show(message);
+            }
+            else
+            {
+                MessageBox.Show(Resources.waitForDownloadMessage);
+            }
             if (chkLaunchSC2.Checked)
             {
                 Process.Start(Settings.Default.SC2Location + "StarCraft II.exe");
@@ -51,6 +62,20 @@ namespace SC2Patch150Relocalizer
         private void comboAsset_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.newAsset = Program.languageList[comboAsset.SelectedIndex].Substring(0, 4);
+            if (!LocaleChanger.CheckIfAssetExists(Program.newAsset))
+            {
+                var message = Resources.assetNotFoundMessage.Replace("xxxx", Program.newAsset);
+                MessageBox.Show(message);
+                comboLocale.SelectedIndex = comboAsset.SelectedIndex;
+                buttonRelocalize.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
+                chkLaunchSC2.Checked = true;
+                chkLaunchSC2.Enabled = false;
+                comboLocale.Enabled = false;
+                return;
+            }
+            comboLocale.Enabled = true;
+            chkLaunchSC2.Enabled = true;
+            buttonRelocalize.Text = Resources.buttonRelocalizeText;
         }
 
         public string BrowseSc2Location()
@@ -60,7 +85,7 @@ namespace SC2Patch150Relocalizer
             {
                 return browserSC2Folder.SelectedPath + "\\";
             }
-            MessageBox.Show("We need to know the SC2 Installation Location!");
+            MessageBox.Show(Resources.SC2LocationNotFoundMessage);
             Application.Exit();
             return null;
         }
@@ -72,7 +97,7 @@ namespace SC2Patch150Relocalizer
             {
                 return browserSC2VarFolder.SelectedPath + "\\";
             }
-            MessageBox.Show("We need to know the SC2 Variable.txt Location!");
+            MessageBox.Show(Resources.SC2VarTXTLocationNotFoundMessage);
             Application.Exit();
             return null;
         }

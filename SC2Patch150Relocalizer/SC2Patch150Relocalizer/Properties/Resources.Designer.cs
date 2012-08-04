@@ -59,5 +59,68 @@ namespace SC2Patch150Relocalizer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have xxxx voice asset downloaded. We are changing your locale to that language, and please relocalize to that language and finish downloading the language pack before you use this asset. Thanks!.
+        /// </summary>
+        internal static string assetNotFoundMessage {
+            get {
+                return ResourceManager.GetString("assetNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to download asset xxxx!.
+        /// </summary>
+        internal static string buttonAssetNotFoundHint {
+            get {
+                return ResourceManager.GetString("buttonAssetNotFoundHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relocalize!.
+        /// </summary>
+        internal static string buttonRelocalizeText {
+            get {
+                return ResourceManager.GetString("buttonRelocalizeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relocalization from aaaa to bbbb with asset from cccc to dddd is finished! Enjoy!.
+        /// </summary>
+        internal static string relocalizationFinishedMessage {
+            get {
+                return ResourceManager.GetString("relocalizationFinishedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We need to know the SC2 Installation Location!.
+        /// </summary>
+        internal static string SC2LocationNotFoundMessage {
+            get {
+                return ResourceManager.GetString("SC2LocationNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We need to know the SC2 Variable.txt Location!.
+        /// </summary>
+        internal static string SC2VarTXTLocationNotFoundMessage {
+            get {
+                return ResourceManager.GetString("SC2VarTXTLocationNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait till download to finish before relocalizing again..
+        /// </summary>
+        internal static string waitForDownloadMessage {
+            get {
+                return ResourceManager.GetString("waitForDownloadMessage", resourceCulture);
+            }
+        }
     }
 }

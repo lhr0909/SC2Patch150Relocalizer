@@ -40,7 +40,7 @@
             // 
             // buttonRelocalize
             // 
-            this.buttonRelocalize.Location = new System.Drawing.Point(9, 76);
+            this.buttonRelocalize.Location = new System.Drawing.Point(9, 75);
             this.buttonRelocalize.Name = "buttonRelocalize";
             this.buttonRelocalize.Size = new System.Drawing.Size(556, 50);
             this.buttonRelocalize.TabIndex = 15;
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 130);
+            this.ClientSize = new System.Drawing.Size(574, 129);
             this.Controls.Add(this.comboLocale);
             this.Controls.Add(this.comboAsset);
             this.Controls.Add(this.label2);
@@ -149,8 +149,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRelocalize);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(583, 157);
-            this.MinimumSize = new System.Drawing.Size(583, 157);
+            this.MaximumSize = new System.Drawing.Size(582, 156);
+            this.MinimumSize = new System.Drawing.Size(582, 156);
             this.Name = "FormSC2RelocalizerMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer";
