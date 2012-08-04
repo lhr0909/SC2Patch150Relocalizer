@@ -20,7 +20,7 @@ namespace SC2Patch150Relocalizer
             LocaleChanger.ChangeLauncherDB(Program.currentLocale, Program.newLocale);
             LocaleChanger.ChangeProductSC2Archive(Program.newLocale);
             LocaleChanger.ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
-            MessageBox.Show("Relocalization from "+ Program.currentLocale + " to " + Program.newLocale + " with asset from " + Program.currentAsset + " to " + Program.currentAsset + " is finished! Enjoy!");
+            MessageBox.Show("Relocalization from "+ Program.currentLocale + " to " + Program.newLocale + " with asset from " + Program.currentAsset + " to " + Program.newAsset + " is finished! Enjoy!");
             if (chkLaunchSC2.Checked)
             {
                 Process.Start(Settings.Default.SC2Location + "StarCraft II.exe");
