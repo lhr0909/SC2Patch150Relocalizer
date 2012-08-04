@@ -67,6 +67,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sc2_zergling_by_thehellbean-d4usawr_big.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -129,7 +132,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SC2Patch150Relocalizer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -152,6 +154,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sc2_zergling_by_thehellbean-d4usawr_big.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

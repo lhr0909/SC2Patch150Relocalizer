@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSC2RelocalizerMain));
             this.buttonRelocalize = new System.Windows.Forms.Button();
             this.browserSC2Folder = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
@@ -148,6 +149,7 @@
             this.Controls.Add(this.chkLaunchSC2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRelocalize);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(582, 156);
             this.MinimumSize = new System.Drawing.Size(582, 156);
