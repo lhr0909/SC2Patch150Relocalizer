@@ -40,11 +40,16 @@ namespace SimonsRelocalizer
             File.Delete(filePath);
             var dest = File.Open(filePath, FileMode.OpenOrCreate);
             var names = assembly.GetManifestResourceNames();
-            var productSC2ArchiveName = "SC2Patch150Relocalizer.EmbeddedResource.Product.SC2Archive." + relocalizeLanguage;
-            var relocalizeFile = assembly.GetManifestResourceStream(productSC2ArchiveName);
-            if (relocalizeFile != null) relocalizeFile.CopyTo(dest);
-            dest.Close();
-            relocalizeFile.Close();
+            foreach (string name in names)
+            {
+                if (name.EndsWith(relocalizeLanguage))
+                {
+                    var relocalizeFile = assembly.GetManifestResourceStream(name);
+                    if (relocalizeFile != null) relocalizeFile.CopyTo(dest);
+                    dest.Close();
+                    relocalizeFile.Close();
+                }
+            }
         } 
 
         public static void ChangeVarTXT(string originalLanguage, string originalAsset, string relocalizeLanguage, string relocalizeAsset)
