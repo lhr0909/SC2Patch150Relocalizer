@@ -2,11 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SC2Patch150Relocalizer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SC2Location" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Program Files (x86)\StarCraft II</Value>
+    <Setting Name="SC2Location" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\StarCraft II\</Value>
     </Setting>
-    <Setting Name="SC2VariablesLocation" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\simon\Documents\Starcraft II\Variables.txt </Value>
+    <Setting Name="SC2VariablesLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\simon\Documents\StarCraft II\Variables.txt</Value>
+    </Setting>
+    <Setting Name="RunSC2AfterRelocalize" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

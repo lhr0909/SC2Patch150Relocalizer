@@ -11,8 +11,7 @@
     <RootNamespace>SC2Patch150Relocalizer</RootNamespace>
     <AssemblyName>SC2Patch150Relocalizer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -40,7 +39,6 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -48,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="LocaleChanger.cs" />
     <Compile Include="FormSC2RelocalizerMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,48 +71,20 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <EmbeddedResource Include="Locales\deDE\agent.db.deDE" />
-    <EmbeddedResource Include="Locales\deDE\Launcher.db.deDE" />
-    <EmbeddedResource Include="Locales\deDE\Product.SC2Archive.deDE" />
-    <EmbeddedResource Include="Locales\enGB\agent.db.enGB" />
-    <EmbeddedResource Include="Locales\enGB\Launcher.db.enGB" />
-    <EmbeddedResource Include="Locales\enGB\Product.SC2Archive.enGB" />
-    <None Include="Locales\enSG\.agent.db" />
-    <None Include="Locales\enSG\Launcher.db" />
-    <None Include="Locales\enSG\Product.SC2Archive" />
-    <None Include="Locales\enUS\.agent.db" />
-    <None Include="Locales\enUS\Launcher.db" />
-    <None Include="Locales\enUS\Product.SC2Archive" />
-    <None Include="Locales\esES\.agent.db" />
-    <None Include="Locales\esES\Launcher.db" />
-    <None Include="Locales\esES\Product.SC2Archive" />
-    <None Include="Locales\esMX\.agent.db" />
-    <None Include="Locales\esMX\Launcher.db" />
-    <None Include="Locales\esMX\Product.SC2Archive" />
-    <None Include="Locales\frFR\.agent.db" />
-    <None Include="Locales\frFR\Launcher.db" />
-    <None Include="Locales\frFR\Product.SC2Archive" />
-    <None Include="Locales\itIT\.agent.db" />
-    <None Include="Locales\itIT\Launcher.db" />
-    <None Include="Locales\itIT\Product.SC2Archive" />
-    <None Include="Locales\koKR\.agent.db" />
-    <None Include="Locales\koKR\Launcher.db" />
-    <None Include="Locales\koKR\Product.SC2Archive" />
-    <None Include="Locales\plPL\.agent.db" />
-    <None Include="Locales\plPL\Launcher.db" />
-    <None Include="Locales\plPL\Product.SC2Archive" />
-    <None Include="Locales\ptBR\.agent.db" />
-    <None Include="Locales\ptBR\Launcher.db" />
-    <None Include="Locales\ptBR\Product.SC2Archive" />
-    <None Include="Locales\ruRU\.agent.db" />
-    <None Include="Locales\ruRU\Launcher.db" />
-    <None Include="Locales\ruRU\Product.SC2Archive" />
-    <None Include="Locales\zhCN\.agent.db" />
-    <None Include="Locales\zhCN\Launcher.db" />
-    <None Include="Locales\zhCN\Product.SC2Archive" />
-    <None Include="Locales\zhTW\.agent.db" />
-    <None Include="Locales\zhTW\Launcher.db" />
-    <None Include="Locales\zhTW\Product.SC2Archive" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.zhTW" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.zhCN" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.ruRU" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.ptBR" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.plPL" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.koKR" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.itIT" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.frFR" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.esMX" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.esES" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.deDE" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enSG" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enGB" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enUS" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +95,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

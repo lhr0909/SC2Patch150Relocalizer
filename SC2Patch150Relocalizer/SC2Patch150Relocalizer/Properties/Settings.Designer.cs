@@ -23,21 +23,39 @@ namespace SC2Patch150Relocalizer.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\StarCraft II")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\StarCraft II\\")]
         public string SC2Location {
             get {
                 return ((string)(this["SC2Location"]));
             }
+            set {
+                this["SC2Location"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\simon\\Documents\\Starcraft II\\Variables.txt ")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\simon\\Documents\\StarCraft II\\Variables.txt")]
         public string SC2VariablesLocation {
             get {
                 return ((string)(this["SC2VariablesLocation"]));
+            }
+            set {
+                this["SC2VariablesLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunSC2AfterRelocalize {
+            get {
+                return ((bool)(this["RunSC2AfterRelocalize"]));
+            }
+            set {
+                this["RunSC2AfterRelocalize"] = value;
             }
         }
     }
