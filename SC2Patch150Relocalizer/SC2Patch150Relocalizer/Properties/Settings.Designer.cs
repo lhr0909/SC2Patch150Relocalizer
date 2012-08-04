@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SC2Patch150Relocalizer.Properties {
+namespace SimonsRelocalizer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -56,6 +56,24 @@ namespace SC2Patch150Relocalizer.Properties {
             }
             set {
                 this["RunSC2AfterRelocalize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int VersionCount {
+            get {
+                return ((int)(this["VersionCount"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("v0.0.3")]
+        public string VersionNumber {
+            get {
+                return ((string)(this["VersionNumber"]));
             }
         }
     }

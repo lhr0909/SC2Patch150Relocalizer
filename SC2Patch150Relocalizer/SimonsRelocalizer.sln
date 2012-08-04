@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC2Patch150Relocalizer", "SC2Patch150Relocalizer\SC2Patch150Relocalizer.csproj", "{2A9B77C7-EFED-4A3F-BA47-F8FA038FEB59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonsRelocalizer", "SC2Patch150Relocalizer\SimonsRelocalizer.csproj", "{2A9B77C7-EFED-4A3F-BA47-F8FA038FEB59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using SC2Patch150Relocalizer.Properties;
+using SimonsRelocalizer.Properties;
 
 
-namespace SC2Patch150Relocalizer
+namespace SimonsRelocalizer
 {
     public partial class FormSC2RelocalizerMain : Form
     {
@@ -41,11 +41,30 @@ namespace SC2Patch150Relocalizer
 
         private void FormSC2RelocalizerMain_Load(object sender, EventArgs e)
         {
+            Text = Text + Settings.Default.VersionNumber;
             SettingsManager.checkSC2Location();
             SettingsManager.checkVarTXTLocation();
             SettingsManager.checkCurrentLocale();
             ChangeComboListValues();
             ChangeCheckBoxValue();
+            CheckUpdate();
+        }
+
+        private void CheckUpdate()
+        {
+            var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
+            if (updatesAvaiable)
+            {
+                labelUpdate.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
+                labelUpdate.ForeColor = System.Drawing.Color.Blue;
+                labelUpdate.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                labelUpdate.Text = Resources.relocalizerUpToDateText;
+                labelUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
+                labelUpdate.Cursor = Cursors.Arrow;
+            }
         }
 
         private void chkLaunchSC2_CheckedChanged(object sender, EventArgs e)
@@ -121,6 +140,14 @@ namespace SC2Patch150Relocalizer
         private void ChangeCheckBoxValue()
         {
             chkLaunchSC2.Checked = Settings.Default.RunSC2AfterRelocalize;
+        }
+
+        private void labelUpdate_Click(object sender, EventArgs e)
+        {
+            if (labelUpdate.ForeColor == System.Drawing.Color.Blue)
+            {
+                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() +".zip");
+            }
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using SC2Patch150Relocalizer.Properties;
+using SimonsRelocalizer.Properties;
 
-namespace SC2Patch150Relocalizer
+namespace SimonsRelocalizer
 {
     class SettingsManager
     {

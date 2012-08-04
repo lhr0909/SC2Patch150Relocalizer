@@ -138,4 +138,10 @@
   <data name="waitForDownloadMessage">
     <value xml:space="preserve">Please wait till download to finish before relocalizing again.</value>
   </data>
+  <data name="updateAvaiableText">
+    <value xml:space="preserve">Update Available! New Version </value>
+  </data>
+  <data name="relocalizerUpToDateText">
+    <value xml:space="preserve">Relocalizer up to date!</value>
+  </data>
 </root>

@@ -1,4 +1,4 @@
-﻿namespace SC2Patch150Relocalizer
+﻿namespace SimonsRelocalizer
 {
     partial class FormSC2RelocalizerMain
     {
@@ -37,6 +37,7 @@
             this.comboAsset = new System.Windows.Forms.ComboBox();
             this.comboLocale = new System.Windows.Forms.ComboBox();
             this.browserSC2VarFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.labelUpdate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonRelocalize
@@ -138,11 +139,24 @@
             this.browserSC2VarFolder.Description = "Please select SC2 Variable.txt Location:";
             this.browserSC2VarFolder.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.labelUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelUpdate.Location = new System.Drawing.Point(301, 55);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(47, 13);
+            this.labelUpdate.TabIndex = 23;
+            this.labelUpdate.Text = "Versions";
+            this.labelUpdate.Click += new System.EventHandler(this.labelUpdate_Click);
+            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 129);
+            this.Controls.Add(this.labelUpdate);
             this.Controls.Add(this.comboLocale);
             this.Controls.Add(this.comboAsset);
             this.Controls.Add(this.label2);
@@ -155,7 +169,7 @@
             this.MinimumSize = new System.Drawing.Size(582, 156);
             this.Name = "FormSC2RelocalizerMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer";
+            this.Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer ";
             this.Load += new System.EventHandler(this.FormSC2RelocalizerMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -172,6 +186,7 @@
         private System.Windows.Forms.ComboBox comboAsset;
         private System.Windows.Forms.ComboBox comboLocale;
         private System.Windows.Forms.FolderBrowserDialog browserSC2VarFolder;
+        private System.Windows.Forms.Label labelUpdate;
     }
 }
 

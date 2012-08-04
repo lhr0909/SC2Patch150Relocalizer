@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SC2Patch150Relocalizer.Properties {
+namespace SimonsRelocalizer.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SC2Patch150Relocalizer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC2Patch150Relocalizer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimonsRelocalizer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -97,6 +97,15 @@ namespace SC2Patch150Relocalizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relocalizer up to date!.
+        /// </summary>
+        internal static string relocalizerUpToDateText {
+            get {
+                return ResourceManager.GetString("relocalizerUpToDateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We need to know the SC2 Installation Location!.
         /// </summary>
         internal static string SC2LocationNotFoundMessage {
@@ -111,6 +120,15 @@ namespace SC2Patch150Relocalizer.Properties {
         internal static string SC2VarTXTLocationNotFoundMessage {
             get {
                 return ResourceManager.GetString("SC2VarTXTLocationNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Available! New Version .
+        /// </summary>
+        internal static string updateAvaiableText {
+            get {
+                return ResourceManager.GetString("updateAvaiableText", resourceCulture);
             }
         }
         
