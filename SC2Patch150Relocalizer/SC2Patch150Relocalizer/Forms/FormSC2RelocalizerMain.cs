@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using SimonsRelocalizer.Properties;
 
@@ -16,7 +17,7 @@ namespace SimonsRelocalizer
         private void buttonRelocalize_Click(object sender, EventArgs e)
         {
             LocaleChanger.RunRelocalize();
-            if (buttonRelocalize.Text == Resources.buttonRelocalizeText)
+            if (buttonRelocalize.Text.Equals(""))
             {
                 var message = CreateRelocalizeMessage();
                 MessageBox.Show(message);
@@ -35,27 +36,15 @@ namespace SimonsRelocalizer
         private void FormSC2RelocalizerMain_Load(object sender, EventArgs e)
         {
             Text = Text + Settings.Default.VersionNumber;
-            SettingsManager.checkSC2Location();
-            SettingsManager.checkVarTXTLocation();
+            Size = new System.Drawing.Size(Size.Width, 225);
+            SettingsManager.CheckSc2Location();
+            SettingsManager.CheckVarTxtLocation();
             SettingsManager.checkCurrentLocale();
+            ChangeSettingTextBoxesValues();
             ChangeComboListValues();
             ChangeCheckBoxValue();
             CheckUpdate();
-        }
-
-        private void CheckUpdate()
-        {
-            var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
-            if (updatesAvaiable)
-            {
-                versionsToolStripMenuItem.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
-                versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
-            }
-            else
-            {
-                versionsToolStripMenuItem.Text = Resources.relocalizerUpToDateText;
-                versionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
-            }
+//            MessageBox.Show(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
         }
 
         private void chkLaunchSC2_CheckedChanged(object sender, EventArgs e)
@@ -77,7 +66,7 @@ namespace SimonsRelocalizer
                 var message = Resources.assetNotFoundMessage.Replace("xxxx", Program.newAsset);
                 MessageBox.Show(message);
                 comboLocale.SelectedIndex = comboAsset.SelectedIndex;
-                buttonRelocalize.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
+                labelInfo.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
                 chkLaunchSC2.Checked = true;
                 chkLaunchSC2.Enabled = false;
                 comboLocale.Enabled = false;
@@ -85,7 +74,60 @@ namespace SimonsRelocalizer
             }
             comboLocale.Enabled = true;
             chkLaunchSC2.Enabled = true;
-            buttonRelocalize.Text = Resources.buttonRelocalizeText;
+            buttonRelocalize.Text = "";
+        }
+
+        private void versionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (versionsToolStripMenuItem.ForeColor == System.Drawing.Color.Blue)
+            {
+                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() + ".zip");
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Resources.aboutMessage);
+        }
+
+        private void theProjectPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/lhr0909/SC2Patch150Relocalizer");
+        }
+
+        private void teamliquidPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.teamliquid.net/forum/viewmessage.php?topic_id=357860");
+        }
+
+        private void timerScrollWindow_Tick(object sender, EventArgs e)
+        {
+            Size = new System.Drawing.Size(Size.Width, Size.Height + Program.scrollOffset);
+            if ((Size.Height >= 305) || (Size.Height <= 225))
+            {
+                timerScrollWindow.Enabled = false;
+                Program.scrollOffset = -Program.scrollOffset;
+                buttonSettings.Enabled = true;
+            }
+        }
+
+        private void buttonChangeSC2Location_Click(object sender, EventArgs e)
+        {
+            Settings.Default.SC2Location = BrowseSc2Location();
+            SettingsManager.CheckSc2Location();
+            ChangeSettingTextBoxesValues();
+        }
+
+        private void buttonChangeSC2VariablesLocation_Click(object sender, EventArgs e)
+        {
+            Settings.Default.SC2VariablesLocation = BrowseSc2VarTxtLocation() + "\\Variables.txt";
+            SettingsManager.CheckVarTxtLocation();
+            ChangeSettingTextBoxesValues();
         }
 
         public string BrowseSc2Location()
@@ -96,7 +138,7 @@ namespace SimonsRelocalizer
                 return browserSC2Folder.SelectedPath + "\\";
             }
             MessageBox.Show(Resources.SC2LocationNotFoundMessage);
-            Application.Exit();
+            if (!Visible) Application.Exit();
             return null;
         }
 
@@ -108,11 +150,32 @@ namespace SimonsRelocalizer
                 return browserSC2VarFolder.SelectedPath + "\\";
             }
             MessageBox.Show(Resources.SC2VarTXTLocationNotFoundMessage);
-            Application.Exit();
+            if (!Visible) Application.Exit();
             return null;
         }
 
-        public void ChangeComboListValues()
+        private void ChangeSettingTextBoxesValues()
+        {
+            textSC2Location.Text = Settings.Default.SC2Location;
+            textSC2VariablesLocation.Text = Settings.Default.SC2VariablesLocation;
+        }
+
+        private void CheckUpdate()
+        {
+            var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
+            if (updatesAvaiable)
+            {
+                versionsToolStripMenuItem.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
+                versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
+            }
+            else
+            {
+                versionsToolStripMenuItem.Text = Resources.relocalizerUpToDateText;
+                versionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
+            }
+        }
+
+        private void ChangeComboListValues()
         {
             for (int i = 0; i < Program.languageList.Length; i++)
             {
@@ -143,32 +206,18 @@ namespace SimonsRelocalizer
             chkLaunchSC2.Checked = Settings.Default.RunSC2AfterRelocalize;
         }
 
-        private void versionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void buttonSettings_Click(object sender, EventArgs e)
         {
-            if (versionsToolStripMenuItem.ForeColor == System.Drawing.Color.Blue)
+            timerScrollWindow.Enabled = true;
+            if (Program.scrollOffset > 0)
             {
-                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() + ".zip");
+                buttonSettings.Text = "Hide Settings";
             }
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Resources.aboutMessage);
-        }
-
-        private void theProjectPageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://github.com/lhr0909/SC2Patch150Relocalizer");
-        }
-
-        private void teamliquidPageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("http://www.teamliquid.net/forum/viewmessage.php?topic_id=357860");
+            else
+            {
+                buttonSettings.Text = "Show Settings";
+            }
+            buttonSettings.Enabled = false;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSC2RelocalizerMain));
             this.buttonRelocalize = new System.Windows.Forms.Button();
             this.browserSC2Folder = new System.Windows.Forms.FolderBrowserDialog();
@@ -38,26 +39,33 @@
             this.comboLocale = new System.Windows.Forms.ComboBox();
             this.browserSC2VarFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.versionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teamliquidPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theProjectPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.versionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelInfo = new System.Windows.Forms.Label();
+            this.timerScrollWindow = new System.Windows.Forms.Timer(this.components);
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonChangeSC2Location = new System.Windows.Forms.Button();
+            this.buttonChangeSC2VariablesLocation = new System.Windows.Forms.Button();
+            this.textSC2Location = new System.Windows.Forms.TextBox();
+            this.textSC2VariablesLocation = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRelocalize
             // 
             this.buttonRelocalize.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.icon_by_existor;
-            this.buttonRelocalize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRelocalize.Location = new System.Drawing.Point(6, 109);
+            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.relocalize_button;
+            this.buttonRelocalize.Location = new System.Drawing.Point(325, 27);
             this.buttonRelocalize.Name = "buttonRelocalize";
-            this.buttonRelocalize.Size = new System.Drawing.Size(556, 134);
+            this.buttonRelocalize.Size = new System.Drawing.Size(190, 161);
             this.buttonRelocalize.TabIndex = 15;
-            this.buttonRelocalize.Text = "Relocalize!";
             this.buttonRelocalize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonRelocalize.UseVisualStyleBackColor = true;
             this.buttonRelocalize.Click += new System.EventHandler(this.buttonRelocalize_Click);
@@ -65,12 +73,11 @@
             // browserSC2Folder
             // 
             this.browserSC2Folder.Description = "Please select SC2 Installation Location";
-            this.browserSC2Folder.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(299, 36);
+            this.label1.Location = new System.Drawing.Point(50, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 17;
@@ -79,7 +86,7 @@
             // chkLaunchSC2
             // 
             this.chkLaunchSC2.AutoSize = true;
-            this.chkLaunchSC2.Location = new System.Drawing.Point(9, 80);
+            this.chkLaunchSC2.Location = new System.Drawing.Point(53, 142);
             this.chkLaunchSC2.Name = "chkLaunchSC2";
             this.chkLaunchSC2.Size = new System.Drawing.Size(178, 17);
             this.chkLaunchSC2.TabIndex = 18;
@@ -90,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 35);
+            this.label2.Location = new System.Drawing.Point(50, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 13);
             this.label2.TabIndex = 20;
@@ -115,7 +122,7 @@
             "koKR - KR/TW - Korean",
             "zhTW - KR/TW - 繁體中文 (Taiwan, tranditional)",
             "enSG - SEA - English (Singapore)"});
-            this.comboAsset.Location = new System.Drawing.Point(302, 52);
+            this.comboAsset.Location = new System.Drawing.Point(53, 98);
             this.comboAsset.Name = "comboAsset";
             this.comboAsset.Size = new System.Drawing.Size(263, 21);
             this.comboAsset.TabIndex = 21;
@@ -140,7 +147,7 @@
             "koKR - KR/TW - Korean",
             "zhTW - KR/TW - 繁體中文 (Taiwan, tranditional)",
             "enSG - SEA - English (Singapore)"});
-            this.comboLocale.Location = new System.Drawing.Point(9, 51);
+            this.comboLocale.Location = new System.Drawing.Point(53, 53);
             this.comboLocale.Name = "comboLocale";
             this.comboLocale.Size = new System.Drawing.Size(263, 21);
             this.comboLocale.TabIndex = 22;
@@ -149,20 +156,26 @@
             // browserSC2VarFolder
             // 
             this.browserSC2VarFolder.Description = "Please select SC2 Variable.txt Location:";
-            this.browserSC2VarFolder.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
             this.versionsToolStripMenuItem,
+            this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(574, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(524, 24);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // versionsToolStripMenuItem
+            // 
+            this.versionsToolStripMenuItem.Name = "versionsToolStripMenuItem";
+            this.versionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.versionsToolStripMenuItem.Text = "Versions";
+            this.versionsToolStripMenuItem.Click += new System.EventHandler(this.versionsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -201,13 +214,6 @@
             this.aboutToolStripMenuItem2.Text = "&About";
             this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.aboutToolStripMenuItem2_Click);
             // 
-            // versionsToolStripMenuItem
-            // 
-            this.versionsToolStripMenuItem.Name = "versionsToolStripMenuItem";
-            this.versionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.versionsToolStripMenuItem.Text = "Versions";
-            this.versionsToolStripMenuItem.Click += new System.EventHandler(this.versionsToolStripMenuItem_Click);
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -215,11 +221,94 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // label3
+            // 
+            this.label3.Image = global::SimonsRelocalizer.Properties.Resources.relocalization;
+            this.label3.Location = new System.Drawing.Point(14, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 28);
+            this.label3.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.Image = global::SimonsRelocalizer.Properties.Resources.voice_asset;
+            this.label4.Location = new System.Drawing.Point(14, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 28);
+            this.label4.TabIndex = 26;
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Location = new System.Drawing.Point(50, 148);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(0, 13);
+            this.labelInfo.TabIndex = 27;
+            // 
+            // timerScrollWindow
+            // 
+            this.timerScrollWindow.Interval = 10;
+            this.timerScrollWindow.Tick += new System.EventHandler(this.timerScrollWindow_Tick);
+            // 
+            // buttonSettings
+            // 
+            this.buttonSettings.Location = new System.Drawing.Point(53, 165);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(263, 23);
+            this.buttonSettings.TabIndex = 28;
+            this.buttonSettings.Text = "Show Settings";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            // 
+            // buttonChangeSC2Location
+            // 
+            this.buttonChangeSC2Location.Location = new System.Drawing.Point(17, 215);
+            this.buttonChangeSC2Location.Name = "buttonChangeSC2Location";
+            this.buttonChangeSC2Location.Size = new System.Drawing.Size(171, 23);
+            this.buttonChangeSC2Location.TabIndex = 31;
+            this.buttonChangeSC2Location.Text = "Change Sc2 Location";
+            this.buttonChangeSC2Location.UseVisualStyleBackColor = true;
+            this.buttonChangeSC2Location.Click += new System.EventHandler(this.buttonChangeSC2Location_Click);
+            // 
+            // buttonChangeSC2VariablesLocation
+            // 
+            this.buttonChangeSC2VariablesLocation.Location = new System.Drawing.Point(17, 248);
+            this.buttonChangeSC2VariablesLocation.Name = "buttonChangeSC2VariablesLocation";
+            this.buttonChangeSC2VariablesLocation.Size = new System.Drawing.Size(171, 23);
+            this.buttonChangeSC2VariablesLocation.TabIndex = 32;
+            this.buttonChangeSC2VariablesLocation.Text = "Change Variable.txt Location";
+            this.buttonChangeSC2VariablesLocation.UseVisualStyleBackColor = true;
+            this.buttonChangeSC2VariablesLocation.Click += new System.EventHandler(this.buttonChangeSC2VariablesLocation_Click);
+            // 
+            // textSC2Location
+            // 
+            this.textSC2Location.Enabled = false;
+            this.textSC2Location.Location = new System.Drawing.Point(194, 215);
+            this.textSC2Location.Name = "textSC2Location";
+            this.textSC2Location.Size = new System.Drawing.Size(321, 20);
+            this.textSC2Location.TabIndex = 33;
+            // 
+            // textSC2VariablesLocation
+            // 
+            this.textSC2VariablesLocation.Enabled = false;
+            this.textSC2VariablesLocation.Location = new System.Drawing.Point(194, 251);
+            this.textSC2VariablesLocation.Name = "textSC2VariablesLocation";
+            this.textSC2VariablesLocation.Size = new System.Drawing.Size(321, 20);
+            this.textSC2VariablesLocation.TabIndex = 34;
+            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 255);
+            this.ClientSize = new System.Drawing.Size(524, 279);
+            this.Controls.Add(this.textSC2VariablesLocation);
+            this.Controls.Add(this.textSC2Location);
+            this.Controls.Add(this.buttonChangeSC2VariablesLocation);
+            this.Controls.Add(this.buttonChangeSC2Location);
+            this.Controls.Add(this.buttonSettings);
+            this.Controls.Add(this.labelInfo);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboLocale);
             this.Controls.Add(this.comboAsset);
             this.Controls.Add(this.label2);
@@ -227,11 +316,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRelocalize);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(582, 282);
-            this.MinimumSize = new System.Drawing.Size(582, 282);
             this.Name = "FormSC2RelocalizerMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer ";
@@ -261,6 +349,15 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem teamliquidPageToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelInfo;
+        private System.Windows.Forms.Timer timerScrollWindow;
+        private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Button buttonChangeSC2Location;
+        private System.Windows.Forms.Button buttonChangeSC2VariablesLocation;
+        private System.Windows.Forms.TextBox textSC2Location;
+        private System.Windows.Forms.TextBox textSC2VariablesLocation;
     }
 }
 

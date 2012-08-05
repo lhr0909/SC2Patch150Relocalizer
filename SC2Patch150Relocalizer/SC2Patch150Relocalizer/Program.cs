@@ -32,6 +32,8 @@ namespace SimonsRelocalizer
         public static string newLocale;
         public static string newAsset;
 
+        public static int scrollOffset = 7;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

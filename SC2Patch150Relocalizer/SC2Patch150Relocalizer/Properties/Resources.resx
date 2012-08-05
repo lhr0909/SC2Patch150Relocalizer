@@ -123,35 +123,44 @@
   <data name="SC2LocationNotFoundMessage" xml:space="preserve">
     <value>We need to know the SC2 Installation Location!</value>
   </data>
-  <data name="assetNotFoundMessage" xml:space="preserve">
-    <value>You don't have xxxx voice asset downloaded. We are changing your locale to that language, and please relocalize to that language and finish downloading the language pack before you use this asset. Thanks!</value>
-  </data>
-  <data name="waitForDownloadMessage" xml:space="preserve">
-    <value>Please wait till download to finish before relocalizing again.</value>
-  </data>
-  <data name="buttonAssetNotFoundHint" xml:space="preserve">
-    <value>Click here to download asset xxxx!</value>
-  </data>
-  <data name="buttonRelocalizeText" xml:space="preserve">
-    <value>Relocalize!</value>
-  </data>
-  <data name="relocalizationFinishedMessage" xml:space="preserve">
-    <value>Relocalization from aaaa to bbbb with asset from cccc to dddd is finished! Enjoy!</value>
-  </data>
-  <data name="relocalizerUpToDateText" xml:space="preserve">
-    <value>Relocalizer up to date!</value>
-  </data>
-  <data name="SC2VarTXTLocationNotFoundMessage" xml:space="preserve">
-    <value>We need to know the SC2 Variable.txt Location!</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="icon_by_existor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_by_existor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="aboutMessage">
-    <value xml:space="preserve">Thanks Existor for the icon!
+  <data name="assetNotFoundMessage" xml:space="preserve">
+    <value>You don't have xxxx voice asset downloaded. We are changing your locale to that language, and please relocalize to that language and finish downloading the language pack before you use this asset. Thanks!</value>
+  </data>
+  <data name="buttonRelocalizeText" xml:space="preserve">
+    <value>Relocalize!</value>
+  </data>
+  <data name="aboutMessage" xml:space="preserve">
+    <value>Thanks Existor for the icon!
 
 Author: Simon Liang
 August 2012</value>
+  </data>
+  <data name="buttonAssetNotFoundHint" xml:space="preserve">
+    <value>Click 'Relocalize' to download asset xxxx! -------&gt;</value>
+  </data>
+  <data name="relocalizerUpToDateText" xml:space="preserve">
+    <value>Relocalizer up to date!</value>
+  </data>
+  <data name="voice_asset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\voice_asset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="relocalization" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\relocalization.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="waitForDownloadMessage" xml:space="preserve">
+    <value>Please wait till download to finish before relocalizing again.</value>
+  </data>
+  <data name="relocalizationFinishedMessage" xml:space="preserve">
+    <value>Relocalization from aaaa to bbbb with asset from cccc to dddd is finished! Enjoy!</value>
+  </data>
+  <data name="SC2VarTXTLocationNotFoundMessage" xml:space="preserve">
+    <value>We need to know the SC2 Variable.txt Location!</value>
+  </data>
+  <data name="relocalize_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\relocalize_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -6,7 +6,7 @@ namespace SimonsRelocalizer
 {
     class SettingsManager
     {
-        public static void checkVarTXTLocation()
+        public static void CheckVarTxtLocation()
         {
             //check Variables.txt location
             if (File.Exists(Settings.Default.SC2VariablesLocation)) return;
@@ -22,14 +22,15 @@ namespace SimonsRelocalizer
             {
                 Settings.Default.SC2VariablesLocation = location + "\\Variables.txt";
                 Settings.Default.Save();
+                CheckVarTxtLocation();
             }
         }
 
-        public static void checkSC2Location()
+        public static void CheckSc2Location()
         {
             //check sc2 folder
-            if (Directory.Exists(Settings.Default.SC2Location)) return;
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\StarCraft II\\"))
+            if (File.Exists(Settings.Default.SC2Location + "Launcher.db")) return;
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\StarCraft II\\Launcher.db"))
             {
                 Settings.Default.SC2Location = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) +
                                                "\\StarCraft II\\";
@@ -41,6 +42,7 @@ namespace SimonsRelocalizer
             {
                 Settings.Default.SC2Location = location + "\\";
                 Settings.Default.Save();
+                CheckSc2Location();
             }
         }
 
