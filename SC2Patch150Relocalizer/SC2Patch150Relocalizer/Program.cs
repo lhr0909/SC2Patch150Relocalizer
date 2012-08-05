@@ -9,20 +9,20 @@ namespace SimonsRelocalizer
     {
 
         public static string[] languageList = {
-                                                  "enUS - AM - English (US)",
-                                                  "esMX - AM - Español (Latin America)",
-                                                  "ptBR - AM - Português (Brazil)",
-                                                  "zhCN - CN - 简体中文 (PR China, simplified)",
-                                                  "enGB - EU - English (UK)",
-                                                  "frFR - EU - Français",
-                                                  "deDE - EU - Deutsch",
-                                                  "itIT - EU - Italiano ",
-                                                  "plPL - EU - Polski",
-                                                  "ruRU - EU - Русский",
-                                                  "esES - EU - Español (Spain)",
-                                                  "koKR - KR/TW - Korean",
-                                                  "zhTW - KR/TW - 繁體中文 (Taiwan, tranditional)",
-                                                  "enSG - SEA - English (Singapore)"
+                                                  "AM - English (US) - enUS",
+                                                  "AM - Español (Latin America) - esMX",
+                                                  "AM - Português (Brazil) - ptBR",
+                                                  "CN - 简体中文 (PR China, simplified) - zhCN",
+                                                  "EU - English (UK) - enGB",
+                                                  "EU - Français - frFR",
+                                                  "EU - Deutsch - deDE",
+                                                  "EU - Italiano - itIT",
+                                                  "EU - Polski - plPL",
+                                                  "EU - Русский - ruRU",
+                                                  "EU - Español (Spain) - esES",
+                                                  "KR/TW - Korean - koKR",
+                                                  "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
+                                                  "SEA - English (Singapore) - enSG"
                                               };
 
         public static FormSC2RelocalizerMain mainForm;
@@ -33,6 +33,7 @@ namespace SimonsRelocalizer
         public static string newAsset;
 
         public static int scrollOffset = 7;
+        public static string pingRegion;
 
         /// <summary>
         /// The main entry point for the application.

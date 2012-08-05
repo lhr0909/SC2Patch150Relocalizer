@@ -8,33 +8,75 @@ namespace SimonsRelocalizer
 {
     public class PingChecker
     {
-        private const string pingData = "SimonsRelocalizerTestingPingYeah";
+        private const string pingData = "SimonsRelocalizerTestingPingHere";
 
-//        public static int CheckPing(string hostname)
-//        {
-//            var ttl = 1;
-//            var stopwatch = new Stopwatch();
-//            stopwatch.Reset();
-//            stopwatch.Start();
-//            var reply = Ping(hostname, ttl);
-//            stopwatch.Stop();
-//
-//            var result = new List<IPAddress>();
-//            if (reply.Status == IPStatus.Success)
-//            {
-//                result.Add(reply.Address);
-//            }
-//            else if (reply.Status == IPStatus.TtlExpired)
-//            {
-//                result.Add(reply.Address);
-//                var tempResult = GetTraceRoute(hostname, ttl + 1);
-//                result.AddRange(tempResult);
-//            }
-//        }
+        public static List<IPAddress> result;
+
+        public static List<long> pingTimeout; 
+
+        public static void CheckPing(string hostname)
+        {
+            int failCount = 0;
+            result = new List<IPAddress>();
+            pingTimeout = new List<long>();
+            for (int ttl = 1; ttl < 20; ttl++)
+            {
+                var stopwatch = new Stopwatch();
+                stopwatch.Reset();
+                stopwatch.Start();
+                var reply = Ping(hostname, ttl);
+                stopwatch.Stop();
+                if (reply.Status == IPStatus.TtlExpired)
+                {
+                    result.Add(reply.Address);
+                    pingTimeout.Add(stopwatch.ElapsedMilliseconds);
+                }
+                else if (reply.Status == IPStatus.Success)
+                {
+                    result.Add(reply.Address);
+                    pingTimeout.Add(stopwatch.ElapsedMilliseconds);
+                    break;
+                }
+                else
+                {
+                    failCount = failCount + 1;
+                    if (failCount > 5)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
 
         public static PingReply Ping(string hostname, int ttl)
         {
-            return new Ping().Send(hostname, 1000, Encoding.ASCII.GetBytes(pingData), new PingOptions(ttl, true));
+            return new Ping().Send(hostname, 700, Encoding.ASCII.GetBytes(pingData), new PingOptions(ttl, true));
+        }
+
+        public static string GetBattleNetHostname(string region)
+        {
+            if (region.Equals("AM"))
+            {
+                return "us.logon.battle.net";
+            }
+            if (region.Equals("EU"))
+            {
+                return "eu.logon.battle.net";
+            }
+            if (region.Equals("SEA"))
+            {
+                return "sg.logon.battle.net";
+            }
+            if (region.Equals("KR/TW"))
+            {
+                return "kr.logon.battle.net";
+            }
+            if (region.Equals("CN"))
+            {
+//                return "cn.logon.battle.net";
+                return "124.160.81.22";
+            }
+            return null;
         }
     }
 }

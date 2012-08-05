@@ -61,7 +61,7 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public int VersionCount {
             get {
                 return ((int)(this["VersionCount"]));
@@ -70,10 +70,22 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("v0.1.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v0.2.0")]
         public string VersionNumber {
             get {
                 return ((string)(this["VersionNumber"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckPing {
+            get {
+                return ((bool)(this["CheckPing"]));
+            }
+            set {
+                this["CheckPing"] = value;
             }
         }
     }

@@ -55,6 +55,9 @@
             this.buttonChangeSC2VariablesLocation = new System.Windows.Forms.Button();
             this.textSC2Location = new System.Windows.Forms.TextBox();
             this.textSC2VariablesLocation = new System.Windows.Forms.TextBox();
+            this.labelPing = new System.Windows.Forms.Label();
+            this.timerCheckPing = new System.Windows.Forms.Timer(this.components);
+            this.chkPing = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +89,7 @@
             // chkLaunchSC2
             // 
             this.chkLaunchSC2.AutoSize = true;
-            this.chkLaunchSC2.Location = new System.Drawing.Point(53, 142);
+            this.chkLaunchSC2.Location = new System.Drawing.Point(53, 125);
             this.chkLaunchSC2.Name = "chkLaunchSC2";
             this.chkLaunchSC2.Size = new System.Drawing.Size(178, 17);
             this.chkLaunchSC2.TabIndex = 18;
@@ -108,20 +111,20 @@
             this.comboAsset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAsset.FormattingEnabled = true;
             this.comboAsset.Items.AddRange(new object[] {
-            "enUS - AM - English (US)",
-            "esMX - AM - Español (Latin America)",
-            "ptBR - AM - Português (Brazil)",
-            "zhCN - CN - 简体中文 (PR China, simplified)",
-            "enGB - EU - English (UK)",
-            "frFR - EU - Français",
-            "deDE - EU - Deutsch",
-            "itIT - EU - Italiano ",
-            "plPL - EU - Polski",
-            "ruRU - EU - Русский",
-            "esES - EU - Español (Spain)",
-            "koKR - KR/TW - Korean",
-            "zhTW - KR/TW - 繁體中文 (Taiwan, tranditional)",
-            "enSG - SEA - English (Singapore)"});
+            "AM - English (US) - enUS",
+            "AM - Español (Latin America) - esMX",
+            "AM - Português (Brazil) - ptBR",
+            "CN - 简体中文 (PR China, simplified) - zhCN",
+            "EU - English (UK) - enGB",
+            "EU - Français - frFR",
+            "EU - Deutsch - deDE",
+            "EU - Italiano - itIT",
+            "EU - Polski - plPL",
+            "EU - Русский - ruRU",
+            "EU - Español (Spain) - esES",
+            "KR/TW - Korean - koKR",
+            "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
+            "SEA - English (Singapore) - enSG"});
             this.comboAsset.Location = new System.Drawing.Point(53, 98);
             this.comboAsset.Name = "comboAsset";
             this.comboAsset.Size = new System.Drawing.Size(263, 21);
@@ -133,20 +136,20 @@
             this.comboLocale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboLocale.FormattingEnabled = true;
             this.comboLocale.Items.AddRange(new object[] {
-            "enUS - AM - English (US)",
-            "esMX - AM - Español (Latin America)",
-            "ptBR - AM - Português (Brazil)",
-            "zhCN - CN - 简体中文 (PR China, simplified)",
-            "enGB - EU - English (UK)",
-            "frFR - EU - Français",
-            "deDE - EU - Deutsch",
-            "itIT - EU - Italiano ",
-            "plPL - EU - Polski",
-            "ruRU - EU - Русский",
-            "esES - EU - Español (Spain)",
-            "koKR - KR/TW - Korean",
-            "zhTW - KR/TW - 繁體中文 (Taiwan, tranditional)",
-            "enSG - SEA - English (Singapore)"});
+            "AM - English (US) - enUS",
+            "AM - Español (Latin America) - esMX",
+            "AM - Português (Brazil) - ptBR",
+            "CN - 简体中文 (PR China, simplified) - zhCN",
+            "EU - English (UK) - enGB",
+            "EU - Français - frFR",
+            "EU - Deutsch - deDE",
+            "EU - Italiano - itIT",
+            "EU - Polski - plPL",
+            "EU - Русский - ruRU",
+            "EU - Español (Spain) - esES",
+            "KR/TW - Korean - koKR",
+            "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
+            "SEA - English (Singapore) - enSG"});
             this.comboLocale.Location = new System.Drawing.Point(53, 53);
             this.comboLocale.Name = "comboLocale";
             this.comboLocale.Size = new System.Drawing.Size(263, 21);
@@ -240,7 +243,7 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(50, 148);
+            this.labelInfo.Location = new System.Drawing.Point(57, 148);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(0, 13);
             this.labelInfo.TabIndex = 27;
@@ -296,11 +299,37 @@
             this.textSC2VariablesLocation.Size = new System.Drawing.Size(321, 20);
             this.textSC2VariablesLocation.TabIndex = 34;
             // 
+            // labelPing
+            // 
+            this.labelPing.AutoSize = true;
+            this.labelPing.Location = new System.Drawing.Point(231, 127);
+            this.labelPing.Name = "labelPing";
+            this.labelPing.Size = new System.Drawing.Size(54, 13);
+            this.labelPing.TabIndex = 35;
+            this.labelPing.Text = "Ping: N/A";
+            // 
+            // timerCheckPing
+            // 
+            this.timerCheckPing.Tick += new System.EventHandler(this.timerCheckPing_Tick);
+            // 
+            // chkPing
+            // 
+            this.chkPing.AutoSize = true;
+            this.chkPing.Location = new System.Drawing.Point(53, 277);
+            this.chkPing.Name = "chkPing";
+            this.chkPing.Size = new System.Drawing.Size(156, 17);
+            this.chkPing.TabIndex = 36;
+            this.chkPing.Text = "Check ping to region server";
+            this.chkPing.UseVisualStyleBackColor = true;
+            this.chkPing.CheckedChanged += new System.EventHandler(this.chkPing_CheckedChanged);
+            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 279);
+            this.ClientSize = new System.Drawing.Size(524, 300);
+            this.Controls.Add(this.chkPing);
+            this.Controls.Add(this.labelPing);
             this.Controls.Add(this.textSC2VariablesLocation);
             this.Controls.Add(this.textSC2Location);
             this.Controls.Add(this.buttonChangeSC2VariablesLocation);
@@ -358,6 +387,9 @@
         private System.Windows.Forms.Button buttonChangeSC2VariablesLocation;
         private System.Windows.Forms.TextBox textSC2Location;
         private System.Windows.Forms.TextBox textSC2VariablesLocation;
+        private System.Windows.Forms.Label labelPing;
+        private System.Windows.Forms.Timer timerCheckPing;
+        private System.Windows.Forms.CheckBox chkPing;
     }
 }
 

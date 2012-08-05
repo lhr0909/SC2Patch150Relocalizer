@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using SimonsRelocalizer.Properties;
 
 namespace SimonsRelocalizer
@@ -92,7 +93,7 @@ namespace SimonsRelocalizer
                 //make sure that the value is correct in those files
                 foreach (string value in Program.languageList)
                 {
-                    var locale = value.Substring(0, 4);
+                    var locale = GetLocaleFromLanguageListItem(value);
                     text = text.Replace(locale, relocalizeLanguage);
                     text = text.Replace(locale.ToLower(), relocalizeLanguage.ToLower());
                 }
@@ -104,25 +105,35 @@ namespace SimonsRelocalizer
         {
             //make backups up to 5 previous changes
             int version = 1;
-            while ((File.Exists(filePath + ".version" + version.ToString())) && (version < 6))
+            while ((File.Exists(filePath + ".version" + version)) && (version < 6))
             {
                 version = version + 1;
             }
             if (version > 5)
             {
-                File.Copy(filePath, filePath + ".version" + version.ToString());
+                File.Copy(filePath, filePath + ".version" + version);
                 for (int i = 1; i <= 6; i++)
                 {
-                    var fileNameFrom = filePath + ".version" + i.ToString();
-                    var fileNameTo = filePath + ".version" + (i - 1).ToString();
+                    var fileNameFrom = filePath + ".version" + i;
+                    var fileNameTo = filePath + ".version" + (i - 1);
                     File.Move(fileNameFrom, fileNameTo);
                 }
                 File.Delete(filePath + ".version0");
             }
             else
             {
-                File.Copy(filePath, filePath + ".version" + version.ToString());
+                File.Copy(filePath, filePath + ".version" + version);
             }
+        }
+
+        public static string GetLocaleFromLanguageListItem(string item)
+        {
+            return Regex.Split(item, " - ")[2];
+        }
+
+        public static string GetRegionFromLanguageListItem(string item)
+        {
+            return Regex.Split(item, " - ")[0];
         }
     }
 }

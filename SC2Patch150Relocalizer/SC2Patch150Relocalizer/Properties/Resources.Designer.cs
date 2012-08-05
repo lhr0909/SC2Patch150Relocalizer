@@ -99,6 +99,15 @@ namespace SimonsRelocalizer.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Checking Ping....
+        /// </summary>
+        internal static string checkingPingMessage {
+            get {
+                return ResourceManager.GetString("checkingPingMessage", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap icon_by_existor {
             get {
                 object obj = ResourceManager.GetObject("icon_by_existor", resourceCulture);

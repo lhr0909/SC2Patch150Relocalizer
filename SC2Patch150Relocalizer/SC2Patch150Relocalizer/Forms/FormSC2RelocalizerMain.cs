@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 using SimonsRelocalizer.Properties;
-
 
 namespace SimonsRelocalizer
 {
@@ -42,9 +40,8 @@ namespace SimonsRelocalizer
             SettingsManager.checkCurrentLocale();
             ChangeSettingTextBoxesValues();
             ChangeComboListValues();
-            ChangeCheckBoxValue();
+            ChangeCheckBoxesValues();
             CheckUpdate();
-//            MessageBox.Show(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
         }
 
         private void chkLaunchSC2_CheckedChanged(object sender, EventArgs e)
@@ -55,12 +52,15 @@ namespace SimonsRelocalizer
 
         private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Program.newLocale = Program.languageList[comboLocale.SelectedIndex].Substring(0, 4);
+            labelPing.Text = Resources.checkingPingMessage;
+            Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
+            Program.pingRegion = LocaleChanger.GetRegionFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
+            timerCheckPing.Enabled = true;
         }
 
         private void comboAsset_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Program.newAsset = Program.languageList[comboAsset.SelectedIndex].Substring(0, 4);
+            Program.newAsset = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboAsset.SelectedIndex]);
             if (!LocaleChanger.CheckIfAssetExists(Program.newAsset))
             {
                 var message = Resources.assetNotFoundMessage.Replace("xxxx", Program.newAsset);
@@ -108,12 +108,18 @@ namespace SimonsRelocalizer
         private void timerScrollWindow_Tick(object sender, EventArgs e)
         {
             Size = new System.Drawing.Size(Size.Width, Size.Height + Program.scrollOffset);
-            if ((Size.Height >= 305) || (Size.Height <= 225))
+            if ((Size.Height >= 325) || (Size.Height <= 225))
             {
                 timerScrollWindow.Enabled = false;
                 Program.scrollOffset = -Program.scrollOffset;
                 buttonSettings.Enabled = true;
             }
+        }
+
+        private void timerCheckPing_Tick(object sender, EventArgs e)
+        {
+            CheckAndChangePing(PingChecker.GetBattleNetHostname(Program.pingRegion));
+            timerCheckPing.Enabled = false;
         }
 
         private void buttonChangeSC2Location_Click(object sender, EventArgs e)
@@ -128,6 +134,20 @@ namespace SimonsRelocalizer
             Settings.Default.SC2VariablesLocation = BrowseSc2VarTxtLocation() + "\\Variables.txt";
             SettingsManager.CheckVarTxtLocation();
             ChangeSettingTextBoxesValues();
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            timerScrollWindow.Enabled = true;
+            if (Program.scrollOffset > 0)
+            {
+                buttonSettings.Text = "Hide Settings";
+            }
+            else
+            {
+                buttonSettings.Text = "Show Settings";
+            }
+            buttonSettings.Enabled = false;
         }
 
         public string BrowseSc2Location()
@@ -180,11 +200,11 @@ namespace SimonsRelocalizer
             for (int i = 0; i < Program.languageList.Length; i++)
             {
                 string locale = Program.languageList[i];
-                if (locale.StartsWith(Program.currentLocale))
+                if (locale.EndsWith(Program.currentLocale))
                 {
                     comboLocale.SelectedIndex = i;
                 }
-                if (locale.StartsWith(Program.currentAsset))
+                if (locale.EndsWith(Program.currentAsset))
                 {
                     comboAsset.SelectedIndex = i;
                 }
@@ -201,23 +221,27 @@ namespace SimonsRelocalizer
             return message;
         }
 
-        private void ChangeCheckBoxValue()
+        private void ChangeCheckBoxesValues()
         {
             chkLaunchSC2.Checked = Settings.Default.RunSC2AfterRelocalize;
+            chkPing.Checked = Settings.Default.CheckPing;
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
+        private void CheckAndChangePing(string hostname)
         {
-            timerScrollWindow.Enabled = true;
-            if (Program.scrollOffset > 0)
+            if (!Settings.Default.CheckPing)
             {
-                buttonSettings.Text = "Hide Settings";
+                labelPing.Text = "Ping: N/A";
+                return;
             }
-            else
-            {
-                buttonSettings.Text = "Show Settings";
-            }
-            buttonSettings.Enabled = false;
+            PingChecker.CheckPing(hostname);
+            labelPing.Text = "Ping: " + PingChecker.pingTimeout[PingChecker.pingTimeout.Count - 1] + "ms";
+        }
+
+        private void chkPing_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.CheckPing = chkPing.Checked;
+            Settings.Default.Save();
         }
     }
 }
