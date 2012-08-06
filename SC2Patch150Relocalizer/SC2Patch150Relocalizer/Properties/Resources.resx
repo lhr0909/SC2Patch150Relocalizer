@@ -128,7 +128,10 @@
     <value>..\Resources\icon_by_existor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="assetNotFoundMessage" xml:space="preserve">
-    <value>You don't have xxxx voice asset downloaded. We are changing your locale to that language, and please relocalize to that language and finish downloading the language pack before you use this asset. Thanks!</value>
+    <value>You don't have xxxx voice asset downloaded. Do you still want to use this asset?
+
+Choose 'Yes' to proceed to download the asset.
+Choose 'No' to revert your seletion.</value>
   </data>
   <data name="buttonRelocalizeText" xml:space="preserve">
     <value>Relocalize!</value>
@@ -167,5 +170,15 @@ August 2012</value>
   </data>
   <data name="checkingPingMessage" xml:space="preserve">
     <value>Checking Ping...</value>
+  </data>
+  <data name="MITLicenseMessage" xml:space="preserve">
+    <value>Copyright (C) 2012 Haoran Liang
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</value>
   </data>
 </root>

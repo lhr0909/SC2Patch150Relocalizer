@@ -50,6 +50,13 @@ namespace SimonsRelocalizer
             Settings.Default.Save();
         }
 
+
+        private void chkPing_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.CheckPing = chkPing.Checked;
+            Settings.Default.Save();
+        }
+
         private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelPing.Text = Resources.checkingPingMessage;
@@ -65,17 +72,28 @@ namespace SimonsRelocalizer
             if (!LocaleChanger.CheckIfAssetExists(Program.newAsset))
             {
                 var message = Resources.assetNotFoundMessage.Replace("xxxx", Program.newAsset);
-                MessageBox.Show(message);
-                comboLocale.SelectedIndex = comboAsset.SelectedIndex;
-                labelInfo.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
-                chkLaunchSC2.Checked = true;
-                chkLaunchSC2.Enabled = false;
-                comboLocale.Enabled = false;
-                return;
+                var result = MessageBox.Show(message, "Asset Not Found", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    comboLocale.SelectedIndex = comboAsset.SelectedIndex;
+                    labelInfo.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
+                    chkLaunchSC2.Checked = true;
+                    chkLaunchSC2.Enabled = false;
+                    comboLocale.Enabled = false;
+                    comboAsset.Enabled = false;
+                    return;
+                }
+                for (int i = 0; i < Program.languageList.Length; i++)
+                {
+                    if (LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[i]) == Program.currentAsset)
+                    {
+                        comboAsset.SelectedIndex = i;
+                    }
+                }
             }
             comboLocale.Enabled = true;
+            comboAsset.Enabled = true;
             chkLaunchSC2.Enabled = true;
-            buttonRelocalize.Text = "";
         }
 
         private void versionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,10 +257,9 @@ namespace SimonsRelocalizer
             labelPing.Text = "Ping: " + PingChecker.GetPingTimeout();
         }
 
-        private void chkPing_CheckedChanged(object sender, EventArgs e)
+        private void mITLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.Default.CheckPing = chkPing.Checked;
-            Settings.Default.Save();
+            MessageBox.Show(Resources.MITLicenseMessage, "MIT License");
         }
     }
 }

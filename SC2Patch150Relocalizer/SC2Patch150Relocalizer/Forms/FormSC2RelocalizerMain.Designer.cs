@@ -44,6 +44,7 @@
             this.teamliquidPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theProjectPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mITLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
@@ -186,6 +187,7 @@
             this.teamliquidPageToolStripMenuItem,
             this.theProjectPageToolStripMenuItem,
             this.aboutToolStripMenuItem1,
+            this.mITLicenseToolStripMenuItem,
             this.aboutToolStripMenuItem2});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -209,6 +211,13 @@
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(153, 6);
+            // 
+            // mITLicenseToolStripMenuItem
+            // 
+            this.mITLicenseToolStripMenuItem.Name = "mITLicenseToolStripMenuItem";
+            this.mITLicenseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.mITLicenseToolStripMenuItem.Text = "MIT License";
+            this.mITLicenseToolStripMenuItem.Click += new System.EventHandler(this.mITLicenseToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem2
             // 
@@ -390,6 +399,7 @@
         private System.Windows.Forms.Label labelPing;
         private System.Windows.Forms.Timer timerCheckPing;
         private System.Windows.Forms.CheckBox chkPing;
+        private System.Windows.Forms.ToolStripMenuItem mITLicenseToolStripMenuItem;
     }
 }
 

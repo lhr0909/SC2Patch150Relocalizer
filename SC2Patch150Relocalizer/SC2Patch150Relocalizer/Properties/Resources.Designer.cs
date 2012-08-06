@@ -75,7 +75,10 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You don&apos;t have xxxx voice asset downloaded. We are changing your locale to that language, and please relocalize to that language and finish downloading the language pack before you use this asset. Thanks!.
+        ///   Looks up a localized string similar to You don&apos;t have xxxx voice asset downloaded. Do you still want to use this asset?
+        ///
+        ///Choose &apos;Yes&apos; to proceed to download the asset.
+        ///Choose &apos;No&apos; to revert your seletion..
         /// </summary>
         internal static string assetNotFoundMessage {
             get {
@@ -114,6 +117,19 @@ namespace SimonsRelocalizer.Properties {
             get {
                 object obj = ResourceManager.GetObject("icon_by_existor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright (C) 2012 Haoran Liang
+        ///
+        ///
+        ///Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        ///The above copyright notice and this permiss [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MITLicenseMessage {
+            get {
+                return ResourceManager.GetString("MITLicenseMessage", resourceCulture);
             }
         }
         
