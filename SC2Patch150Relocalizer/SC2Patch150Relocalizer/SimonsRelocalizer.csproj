@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C6FE0AA5D7BBEB0B8513F60A4F70E8BAA8D043D5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7EF0EFC940A4433850320E41C90D648BE7EF0204</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SC2Patch150Relocalizer_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SimonsRelocalizer_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -138,6 +138,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SimonsRelocalizer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

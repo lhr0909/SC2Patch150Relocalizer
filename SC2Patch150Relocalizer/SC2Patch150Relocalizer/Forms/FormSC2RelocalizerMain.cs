@@ -55,6 +55,7 @@ namespace SimonsRelocalizer
             labelPing.Text = Resources.checkingPingMessage;
             Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
             Program.pingRegion = LocaleChanger.GetRegionFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
+            comboAsset.SelectedIndex = comboLocale.SelectedIndex;
             timerCheckPing.Enabled = true;
         }
 
@@ -235,7 +236,7 @@ namespace SimonsRelocalizer
                 return;
             }
             PingChecker.CheckPing(hostname);
-            labelPing.Text = "Ping: " + PingChecker.pingTimeout[PingChecker.pingTimeout.Count - 1] + "ms";
+            labelPing.Text = "Ping: " + PingChecker.GetPingTimeout();
         }
 
         private void chkPing_CheckedChanged(object sender, EventArgs e)

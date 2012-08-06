@@ -78,5 +78,17 @@ namespace SimonsRelocalizer
             }
             return null;
         }
+
+        public static string GetPingTimeout()
+        {
+            if (pingTimeout.Count > 0)
+            {
+                return pingTimeout[pingTimeout.Count - 1].ToString() + "ms"; 
+            }
+            else
+            {
+                return "N/A";
+            }
+        }
     }
 }
