@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.2.0.0</ApplicationVersion>
+    <ApplicationVersion>0.3.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -66,7 +66,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>SC2-SimonsRelocalizer.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -114,6 +114,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.deDE" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enUS" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enSG" />
+    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enGB" />
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.zhTW" />
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.zhCN" />
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.ruRU" />
@@ -124,10 +128,6 @@
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.frFR" />
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.esMX" />
     <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.esES" />
-    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.deDE" />
-    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enSG" />
-    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enGB" />
-    <EmbeddedResource Include="EmbeddedResource\Product.SC2Archive.enUS" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -165,11 +165,12 @@
     <None Include="Resources\icon_by_existor.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
-    <Content Include="Resources\icon.ico" />
     <None Include="Resources\relocalize_button.png" />
     <None Include="Resources\voice_asset.png" />
     <None Include="Resources\relocalization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SC2-SimonsRelocalizer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

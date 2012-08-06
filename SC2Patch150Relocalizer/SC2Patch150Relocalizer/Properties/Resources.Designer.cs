@@ -61,7 +61,9 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanks Existor for the icon!
+        ///   Looks up a localized string similar to Thanks Existor for the graphics!
+        ///Thanks xpaperclip for the SC2Archive files!
+        ///Thanks apocalypse_ua for packing the icon!
         ///
         ///Author: Simon Liang
         ///August 2012.

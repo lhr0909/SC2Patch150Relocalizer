@@ -134,7 +134,9 @@
     <value>Relocalize!</value>
   </data>
   <data name="aboutMessage" xml:space="preserve">
-    <value>Thanks Existor for the icon!
+    <value>Thanks Existor for the graphics!
+Thanks xpaperclip for the SC2Archive files!
+Thanks apocalypse_ua for packing the icon!
 
 Author: Simon Liang
 August 2012</value>
@@ -163,7 +165,7 @@ August 2012</value>
   <data name="relocalize_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\relocalize_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="checkingPingMessage">
-    <value xml:space="preserve">Checking Ping...</value>
+  <data name="checkingPingMessage" xml:space="preserve">
+    <value>Checking Ping...</value>
   </data>
 </root>
