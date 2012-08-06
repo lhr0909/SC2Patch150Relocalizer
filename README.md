@@ -6,6 +6,7 @@ For more information about this project, please visit:
 <http://www.teamliquid.net/forum/viewmessage.php?topic_id=357860>
 
 MIT License
+===========
 
 Copyright (C) 2012 Haoran Liang
 
