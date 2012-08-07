@@ -47,6 +47,14 @@ namespace SimonsRelocalizer
 
         private void FormSC2RelocalizerMain_Load(object sender, EventArgs e)
         {
+            if (Settings.Default.language.Equals("Chinese"))
+            {
+                ChangeToChinese();
+            }
+            else
+            {
+                ChangeToEnglish();
+            }
             Text = Text + Settings.Default.VersionNumber;
             Size = new System.Drawing.Size(Size.Width, 225);
             SettingsManager.CheckSc2Location();
@@ -56,14 +64,6 @@ namespace SimonsRelocalizer
             ChangeComboListValues();
             ChangeCheckBoxesValues();
             CheckUpdate();
-            if (Settings.Default.language.Equals("Chinese"))
-            {
-                ChangeToChinese();
-            }
-            else
-            {
-                ChangeToEnglish();
-            }
         }
 
         private void chkLaunchSC2_CheckedChanged(object sender, EventArgs e)
@@ -372,6 +372,7 @@ namespace SimonsRelocalizer
                 ChangeToChinese();
                 Settings.Default.language = "Chinese";
             }
+            Settings.Default.Save();
         }
     }
 }
