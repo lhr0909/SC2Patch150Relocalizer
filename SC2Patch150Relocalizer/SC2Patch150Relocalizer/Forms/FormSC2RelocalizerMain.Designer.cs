@@ -40,6 +40,7 @@
             this.browserSC2VarFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.versionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageChangeToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teamliquidPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theProjectPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,7 +124,7 @@
             "EU - Polski - plPL",
             "EU - Русский - ruRU",
             "EU - Español (Spain) - esES",
-            "KR/TW - Korean - koKR",
+            "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
             this.comboAsset.Location = new System.Drawing.Point(53, 98);
@@ -148,7 +149,7 @@
             "EU - Polski - plPL",
             "EU - Русский - ruRU",
             "EU - Español (Spain) - esES",
-            "KR/TW - Korean - koKR",
+            "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
             this.comboLocale.Location = new System.Drawing.Point(53, 53);
@@ -165,6 +166,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.versionsToolStripMenuItem,
+            this.languageChangeToolStrip,
             this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -180,6 +182,13 @@
             this.versionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.versionsToolStripMenuItem.Text = "Versions";
             this.versionsToolStripMenuItem.Click += new System.EventHandler(this.versionsToolStripMenuItem_Click);
+            // 
+            // languageChangeToolStrip
+            // 
+            this.languageChangeToolStrip.Name = "languageChangeToolStrip";
+            this.languageChangeToolStrip.Size = new System.Drawing.Size(97, 20);
+            this.languageChangeToolStrip.Text = "点这里汉化(&W)";
+            this.languageChangeToolStrip.Click += new System.EventHandler(this.languageChangeToolStrip_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -400,6 +409,7 @@
         private System.Windows.Forms.Timer timerCheckPing;
         private System.Windows.Forms.CheckBox chkPing;
         private System.Windows.Forms.ToolStripMenuItem mITLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageChangeToolStrip;
     }
 }
 

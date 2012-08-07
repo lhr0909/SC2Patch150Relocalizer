@@ -20,7 +20,7 @@ namespace SimonsRelocalizer
                                                   "EU - Polski - plPL",
                                                   "EU - Русский - ruRU",
                                                   "EU - Español (Spain) - esES",
-                                                  "KR/TW - Korean - koKR",
+                                                  "KR/TW - 한국어 - koKR",
                                                   "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
                                                   "SEA - English (Singapore) - enSG"
                                               };

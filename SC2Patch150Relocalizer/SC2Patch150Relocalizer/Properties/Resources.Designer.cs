@@ -75,6 +75,17 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 作者：梁皓然
+        ///美工：Existor
+        ///2012年8月.
+        /// </summary>
+        internal static string aboutMessageChinese {
+            get {
+                return ResourceManager.GetString("aboutMessageChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You don&apos;t have xxxx voice asset downloaded. Do you still want to use this asset?
         ///
         ///Choose &apos;Yes&apos; to proceed to download the asset.
@@ -83,6 +94,18 @@ namespace SimonsRelocalizer.Properties {
         internal static string assetNotFoundMessage {
             get {
                 return ResourceManager.GetString("assetNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 你没有xxxx版本的语音包。
+        ///
+        ///点击&quot;Yes&quot;进行下载
+        ///点击&quot;No&quot;返回界面重新选择.
+        /// </summary>
+        internal static string assetNotFoundMessageChinese {
+            get {
+                return ResourceManager.GetString("assetNotFoundMessageChinese", resourceCulture);
             }
         }
         
@@ -96,11 +119,11 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Relocalize!.
+        ///   Looks up a localized string similar to 点击&quot;Relocalize&quot;按钮来下载xxxx语音包 ----&gt;.
         /// </summary>
-        internal static string buttonRelocalizeText {
+        internal static string buttonAssetNotFoundHintChinese {
             get {
-                return ResourceManager.GetString("buttonRelocalizeText", resourceCulture);
+                return ResourceManager.GetString("buttonAssetNotFoundHintChinese", resourceCulture);
             }
         }
         
@@ -110,6 +133,51 @@ namespace SimonsRelocalizer.Properties {
         internal static string checkingPingMessage {
             get {
                 return ResourceManager.GetString("checkingPingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 正在检查Ping....
+        /// </summary>
+        internal static string checkingPingMessageChinese {
+            get {
+                return ResourceManager.GetString("checkingPingMessageChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Click me!.
+        /// </summary>
+        internal static string clickMe {
+            get {
+                return ResourceManager.GetString("clickMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  点这里下载.
+        /// </summary>
+        internal static string clickMeChinese {
+            get {
+                return ResourceManager.GetString("clickMeChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide Settings.
+        /// </summary>
+        internal static string hideSettings {
+            get {
+                return ResourceManager.GetString("hideSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 隐藏设置.
+        /// </summary>
+        internal static string hideSettingsChinese {
+            get {
+                return ResourceManager.GetString("hideSettingsChinese", resourceCulture);
             }
         }
         
@@ -149,6 +217,15 @@ namespace SimonsRelocalizer.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to 程序已完成跨区操作! 谢谢!.
+        /// </summary>
+        internal static string relocalizationFinishedMessageChinese {
+            get {
+                return ResourceManager.GetString("relocalizationFinishedMessageChinese", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap relocalize_button {
             get {
                 object obj = ResourceManager.GetObject("relocalize_button", resourceCulture);
@@ -166,11 +243,29 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 软件已是最新版本!.
+        /// </summary>
+        internal static string relocalizerUpToDateTextChinese {
+            get {
+                return ResourceManager.GetString("relocalizerUpToDateTextChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We need to know the SC2 Installation Location!.
         /// </summary>
         internal static string SC2LocationNotFoundMessage {
             get {
                 return ResourceManager.GetString("SC2LocationNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 请提供星际2安装路径！.
+        /// </summary>
+        internal static string SC2LocationNotFoundMessageChinese {
+            get {
+                return ResourceManager.GetString("SC2LocationNotFoundMessageChinese", resourceCulture);
             }
         }
         
@@ -184,11 +279,47 @@ namespace SimonsRelocalizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 请提供Variable.txt路径(一般在我的文档下StarCraft II目录下).
+        /// </summary>
+        internal static string SC2VarTXTLocationNotFoundMessageChinese {
+            get {
+                return ResourceManager.GetString("SC2VarTXTLocationNotFoundMessageChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Settings.
+        /// </summary>
+        internal static string showSettings {
+            get {
+                return ResourceManager.GetString("showSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        internal static string showSettingsChinese {
+            get {
+                return ResourceManager.GetString("showSettingsChinese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Available! New Version .
         /// </summary>
-        internal static string updateAvaiableText {
+        internal static string updateAvailableText {
             get {
-                return ResourceManager.GetString("updateAvaiableText", resourceCulture);
+                return ResourceManager.GetString("updateAvailableText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 新版本 .
+        /// </summary>
+        internal static string updateAvailableTextChinese {
+            get {
+                return ResourceManager.GetString("updateAvailableTextChinese", resourceCulture);
             }
         }
         
@@ -205,6 +336,15 @@ namespace SimonsRelocalizer.Properties {
         internal static string waitForDownloadMessage {
             get {
                 return ResourceManager.GetString("waitForDownloadMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 请等待下载完成再重新跨区，以免程序破坏星际2程序文件.
+        /// </summary>
+        internal static string waitForDownloadMessageChinese {
+            get {
+                return ResourceManager.GetString("waitForDownloadMessageChinese", resourceCulture);
             }
         }
     }

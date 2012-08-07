@@ -61,7 +61,7 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int VersionCount {
             get {
                 return ((int)(this["VersionCount"]));
@@ -70,7 +70,7 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("v1.0.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v1.1.0")]
         public string VersionNumber {
             get {
                 return ((string)(this["VersionNumber"]));
@@ -86,6 +86,18 @@ namespace SimonsRelocalizer.Properties {
             }
             set {
                 this["CheckPing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English")]
+        public string language {
+            get {
+                return ((string)(this["language"]));
+            }
+            set {
+                this["language"] = value;
             }
         }
     }

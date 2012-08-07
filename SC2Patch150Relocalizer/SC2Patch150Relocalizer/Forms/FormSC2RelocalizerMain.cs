@@ -7,6 +7,20 @@ namespace SimonsRelocalizer
 {
     public partial class FormSC2RelocalizerMain : Form
     {
+        private string relocalizationFinishedMessage = Resources.relocalizationFinishedMessage;
+        private string aboutMessage = Resources.aboutMessage;
+        private string assetNotFoundMessage = Resources.assetNotFoundMessage;
+        private string checkingPingMessage = Resources.checkingPingMessage;
+        private string waitForDownloadMessage = Resources.waitForDownloadMessage;
+        private string assetNotFoundHint = Resources.buttonAssetNotFoundHint;
+        private string SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessage;
+        private string SC2VarTXTLocationNotFoundMessage = Resources.SC2VarTXTLocationNotFoundMessage;
+        private string updateAvailableText = Resources.updateAvailableText;
+        private string relocalizerUpToDateText = Resources.relocalizerUpToDateText;
+        private string clickMe = Resources.clickMe;
+        private string hideSettings = Resources.hideSettings;
+        private string showSettings = Resources.showSettings;
+
         public FormSC2RelocalizerMain()
         {
             InitializeComponent();
@@ -22,7 +36,7 @@ namespace SimonsRelocalizer
             }
             else
             {
-                MessageBox.Show(Resources.waitForDownloadMessage);
+                MessageBox.Show(waitForDownloadMessage);
             }
             if (chkLaunchSC2.Checked)
             {
@@ -42,6 +56,14 @@ namespace SimonsRelocalizer
             ChangeComboListValues();
             ChangeCheckBoxesValues();
             CheckUpdate();
+            if (Settings.Default.language.Equals("Chinese"))
+            {
+                ChangeToChinese();
+            }
+            else
+            {
+                ChangeToEnglish();
+            }
         }
 
         private void chkLaunchSC2_CheckedChanged(object sender, EventArgs e)
@@ -59,7 +81,7 @@ namespace SimonsRelocalizer
 
         private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labelPing.Text = Resources.checkingPingMessage;
+            labelPing.Text = checkingPingMessage;
             Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
             Program.pingRegion = LocaleChanger.GetRegionFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
             comboAsset.SelectedIndex = comboLocale.SelectedIndex;
@@ -71,12 +93,12 @@ namespace SimonsRelocalizer
             Program.newAsset = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboAsset.SelectedIndex]);
             if (!LocaleChanger.CheckIfAssetExists(Program.newAsset))
             {
-                var message = Resources.assetNotFoundMessage.Replace("xxxx", Program.newAsset);
+                var message = assetNotFoundMessage.Replace("xxxx", Program.newAsset);
                 var result = MessageBox.Show(message, "Asset Not Found", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     comboLocale.SelectedIndex = comboAsset.SelectedIndex;
-                    labelInfo.Text = Resources.buttonAssetNotFoundHint.Replace("xxxx", Program.newAsset);
+                    labelInfo.Text = assetNotFoundHint.Replace("xxxx", Program.newAsset);
                     chkLaunchSC2.Checked = true;
                     chkLaunchSC2.Enabled = false;
                     comboLocale.Enabled = false;
@@ -115,7 +137,7 @@ namespace SimonsRelocalizer
 
         private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Resources.aboutMessage);
+            MessageBox.Show(aboutMessage);
         }
 
         private void theProjectPageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,11 +186,11 @@ namespace SimonsRelocalizer
             timerScrollWindow.Enabled = true;
             if (Program.scrollOffset > 0)
             {
-                buttonSettings.Text = "Hide Settings";
+                buttonSettings.Text = hideSettings;
             }
             else
             {
-                buttonSettings.Text = "Show Settings";
+                buttonSettings.Text = showSettings;
             }
             buttonSettings.Enabled = false;
         }
@@ -180,7 +202,7 @@ namespace SimonsRelocalizer
             {
                 return browserSC2Folder.SelectedPath + "\\";
             }
-            MessageBox.Show(Resources.SC2LocationNotFoundMessage);
+            MessageBox.Show(SC2LocationNotFoundMessage);
             if (!Visible) Application.Exit();
             return null;
         }
@@ -192,7 +214,7 @@ namespace SimonsRelocalizer
             {
                 return browserSC2VarFolder.SelectedPath + "\\";
             }
-            MessageBox.Show(Resources.SC2VarTXTLocationNotFoundMessage);
+            MessageBox.Show(SC2VarTXTLocationNotFoundMessage);
             if (!Visible) Application.Exit();
             return null;
         }
@@ -208,12 +230,12 @@ namespace SimonsRelocalizer
             var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
             if (updatesAvaiable)
             {
-                versionsToolStripMenuItem.Text = Resources.updateAvaiableText + UpdateManager.GetNewVersionNumber() + " Click me!";
+                versionsToolStripMenuItem.Text = updateAvailableText + UpdateManager.GetNewVersionNumber() + clickMe;
                 versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
             }
             else
             {
-                versionsToolStripMenuItem.Text = Resources.relocalizerUpToDateText;
+                versionsToolStripMenuItem.Text = relocalizerUpToDateText;
                 versionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             }
         }
@@ -234,9 +256,9 @@ namespace SimonsRelocalizer
             }
         }
 
-        private static string CreateRelocalizeMessage()
+        private string CreateRelocalizeMessage()
         {
-            var message = Resources.relocalizationFinishedMessage;
+            var message = relocalizationFinishedMessage;
             message = message.Replace("aaaa", Program.currentLocale);
             message = message.Replace("bbbb", Program.newLocale);
             message = message.Replace("cccc", Program.currentAsset);
@@ -264,6 +286,92 @@ namespace SimonsRelocalizer
         private void mITLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Resources.MITLicenseMessage, "MIT License");
+        }
+
+        private void ChangeToChinese()
+        {
+            Text = "1.5.0版星际2跨服务器软件";
+            versionsToolStripMenuItem.Text = "版本";
+            languageChangeToolStrip.Text = "Click here to s&witch to English";
+            aboutToolStripMenuItem.Text = "关于(&A)";
+            aboutToolStripMenuItem2.Text = "关于(&A)";
+            teamliquidPageToolStripMenuItem.Text = "Teamliquid主页(&T)";
+            theProjectPageToolStripMenuItem.Text = "程序主页(&P)";
+            mITLicenseToolStripMenuItem.Text = "MIT开源证书";
+            exitToolStripMenuItem.Text = "退出";
+            label2.Text = "选择服务器区：";
+            label1.Text = "选择语音包：";
+            chkLaunchSC2.Text = "跨区后自动运行星际2";
+            buttonSettings.Text = "显示设置";
+            buttonChangeSC2Location.Text = "更改星际2路径";
+            buttonChangeSC2VariablesLocation.Text = "更改variable.txt路径";
+            chkPing.Text = "检查服务器Ping";
+            browserSC2Folder.Description = "请选择星际2安装路径：";
+            browserSC2VarFolder.Description = "请选择星际2 Variable.txt路径(一般在我的文档\\StarCraft II目录下):";
+
+            relocalizationFinishedMessage = Resources.relocalizationFinishedMessageChinese;
+            aboutMessage = Resources.aboutMessageChinese;
+            assetNotFoundMessage = Resources.assetNotFoundMessageChinese;
+            checkingPingMessage = Resources.checkingPingMessageChinese;
+            waitForDownloadMessage = Resources.waitForDownloadMessageChinese;
+            assetNotFoundHint = Resources.buttonAssetNotFoundHintChinese;
+            SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessageChinese;
+            SC2VarTXTLocationNotFoundMessage = Resources.SC2VarTXTLocationNotFoundMessageChinese;
+            updateAvailableText = Resources.updateAvailableTextChinese;
+            relocalizerUpToDateText = Resources.relocalizerUpToDateTextChinese;
+            clickMe = Resources.clickMeChinese;
+            showSettings = Resources.showSettingsChinese;
+            hideSettings = Resources.hideSettingsChinese;
+        }
+
+        private void ChangeToEnglish()
+        {
+            Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer ";
+            chkPing.Text = "Check ping to region server";
+            buttonChangeSC2VariablesLocation.Text = "Change Variable.txt Location";
+            buttonChangeSC2Location.Text = "Change Sc2 Location";
+            buttonSettings.Text = "Show Settings";
+            languageChangeToolStrip.Text = "点这里汉化(&W)";
+            exitToolStripMenuItem.Text = "E&xit";
+            aboutToolStripMenuItem2.Text = "&About";
+            mITLicenseToolStripMenuItem.Text = "MIT License";
+            theProjectPageToolStripMenuItem.Text = "The Project &Page";
+            teamliquidPageToolStripMenuItem.Text = "&Teamliquid page";
+            aboutToolStripMenuItem.Text = "&About";
+            versionsToolStripMenuItem.Text = "Versions";
+            browserSC2VarFolder.Description = "Please select SC2 Variable.txt Location:";
+            label2.Text = "Choose Display Language + Region:";
+            chkLaunchSC2.Text = "Launch SC2 after Relocalization";
+            label1.Text = "Choose Voice Asset:";
+            browserSC2Folder.Description = "Please select SC2 Installation Location";
+
+            relocalizationFinishedMessage = Resources.relocalizationFinishedMessage;
+            aboutMessage = Resources.aboutMessage;
+            assetNotFoundMessage = Resources.assetNotFoundMessage;
+            checkingPingMessage = Resources.checkingPingMessage;
+            waitForDownloadMessage = Resources.waitForDownloadMessage;
+            assetNotFoundHint = Resources.buttonAssetNotFoundHint;
+            SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessage;
+            SC2VarTXTLocationNotFoundMessage = Resources.SC2VarTXTLocationNotFoundMessage;
+            updateAvailableText = Resources.updateAvailableText;
+            relocalizerUpToDateText = Resources.relocalizerUpToDateText;
+            clickMe = Resources.clickMe;
+            showSettings = Resources.showSettings;
+            hideSettings = Resources.hideSettings;
+        }
+
+        private void languageChangeToolStrip_Click(object sender, EventArgs e)
+        {
+            if (Settings.Default.language.Equals("Chinese"))
+            {
+                ChangeToEnglish();
+                Settings.Default.language = "English";
+            }
+            else
+            {
+                ChangeToChinese();
+                Settings.Default.language = "Chinese";
+            }
         }
     }
 }

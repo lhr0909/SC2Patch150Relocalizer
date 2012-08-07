@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="updateAvaiableText" xml:space="preserve">
+  <data name="updateAvailableText" xml:space="preserve">
     <value>Update Available! New Version </value>
   </data>
   <data name="SC2LocationNotFoundMessage" xml:space="preserve">
@@ -132,9 +132,6 @@
 
 Choose 'Yes' to proceed to download the asset.
 Choose 'No' to revert your seletion.</value>
-  </data>
-  <data name="buttonRelocalizeText" xml:space="preserve">
-    <value>Relocalize!</value>
   </data>
   <data name="aboutMessage" xml:space="preserve">
     <value>Thanks Existor for the graphics!
@@ -180,5 +177,58 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</value>
+  </data>
+  <data name="aboutMessageChinese" xml:space="preserve">
+    <value>作者：梁皓然
+美工：Existor
+2012年8月</value>
+  </data>
+  <data name="assetNotFoundMessageChinese" xml:space="preserve">
+    <value>你没有xxxx版本的语音包。
+
+点击"Yes"进行下载
+点击"No"返回界面重新选择</value>
+  </data>
+  <data name="buttonAssetNotFoundHintChinese" xml:space="preserve">
+    <value>点击"Relocalize"按钮来下载xxxx语音包 ----&gt;</value>
+  </data>
+  <data name="checkingPingMessageChinese" xml:space="preserve">
+    <value>正在检查Ping...</value>
+  </data>
+  <data name="relocalizationFinishedMessageChinese" xml:space="preserve">
+    <value>程序已完成跨区操作! 谢谢!</value>
+  </data>
+  <data name="relocalizerUpToDateTextChinese" xml:space="preserve">
+    <value>软件已是最新版本!</value>
+  </data>
+  <data name="SC2LocationNotFoundMessageChinese" xml:space="preserve">
+    <value>请提供星际2安装路径！</value>
+  </data>
+  <data name="SC2VarTXTLocationNotFoundMessageChinese" xml:space="preserve">
+    <value>请提供Variable.txt路径(一般在我的文档下StarCraft II目录下)</value>
+  </data>
+  <data name="updateAvailableTextChinese" xml:space="preserve">
+    <value>新版本 </value>
+  </data>
+  <data name="clickMe" xml:space="preserve">
+    <value> Click me!</value>
+  </data>
+  <data name="clickMeChinese" xml:space="preserve">
+    <value> 点这里下载</value>
+  </data>
+  <data name="waitForDownloadMessageChinese" xml:space="preserve">
+    <value>请等待下载完成再重新跨区，以免程序破坏星际2程序文件</value>
+  </data>
+  <data name="hideSettings" xml:space="preserve">
+    <value>Hide Settings</value>
+  </data>
+  <data name="showSettings" xml:space="preserve">
+    <value>Show Settings</value>
+  </data>
+  <data name="hideSettingsChinese" xml:space="preserve">
+    <value>隐藏设置</value>
+  </data>
+  <data name="showSettingsChinese" xml:space="preserve">
+    <value>显示设置</value>
   </data>
 </root>
