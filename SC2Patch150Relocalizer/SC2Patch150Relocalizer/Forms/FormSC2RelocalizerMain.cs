@@ -89,6 +89,10 @@ namespace SimonsRelocalizer
                     {
                         comboAsset.SelectedIndex = i;
                     }
+                    if (LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[i]) == Program.currentLocale)
+                    {
+                        comboLocale.SelectedIndex = i;
+                    }
                 }
             }
             comboLocale.Enabled = true;
