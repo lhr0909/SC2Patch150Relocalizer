@@ -170,3 +170,12 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+
+# Build specific stuff
+
+.git/*
+.idea/*
+build/*
+dist/*
+*.log
