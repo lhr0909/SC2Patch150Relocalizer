@@ -1,0 +1,153 @@
+# GUIBUILDER FILE Build 146
+# Created: 2012-08-09 23:03:42 by GUI Builder Build 146
+language tkinter 8.4
+widget {Tk frame} f {
+	geometry min_column {42 21 98 193}
+	geometry min_row {6 5 10 12 10}
+	geometry pad_column {0 0 0 0}
+	geometry pad_row {0 0 0 0 0}
+	geometry resize_column {0 0 0 0}
+	geometry resize_row {0 0 0 0 0}
+	geometry weight_column {0 0 0 0}
+	geometry weight_row {0 0 0 0 0}
+	data GROUP Tk
+	data ID {}
+	data MASTER {}
+	data TYPE {Tk frame}
+	data level 0
+}
+widget {Tk label} _label_1 {
+	configure -justify left
+	configure -text locale:
+	geometry -column 2
+	geometry -columnspan 1
+	geometry -row 1
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Tk
+	data ID labelLocale
+	data MASTER {}
+	data TYPE {Tk label}
+}
+widget {Tk label} _label_2 {
+	configure -justify left
+	configure -text asset:
+	geometry -column 2
+	geometry -columnspan 1
+	geometry -row 3
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Tk
+	data ID labelAsset
+	data MASTER {}
+	data TYPE {Tk label}
+}
+widget {Tk button} _button_1 {
+	configure -height 169
+	configure -image resources/relocalize_button.GIF
+	configure -text Relocalize!
+	configure -width 195
+	geometry -column 4
+	geometry -columnspan 1
+	geometry -row 1
+	geometry -rowspan 5
+	geometry -sticky {}
+	data GROUP Tk
+	data ID buttonRelocalize
+	data MASTER {}
+	data TYPE {Tk button}
+}
+widget {Tk label} _label_3 {
+	configure -image resources/relocalization.GIF
+	configure -text globe
+	geometry -column 1
+	geometry -columnspan 1
+	geometry -row 2
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Tk
+	data ID labelGlobe
+	data MASTER {}
+	data TYPE {Tk label}
+}
+widget {Tk label} _label_4 {
+	configure -image resources/voice_asset.GIF
+	configure -text speaker
+	geometry -column 1
+	geometry -columnspan 1
+	geometry -row 4
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Tk
+	data ID labelSpeaker
+	data MASTER {}
+	data TYPE {Tk label}
+}
+widget {Pmw ComboBox} _ComboBox_3 {
+	configure -selectioncommand {}
+	geometry -column 2
+	geometry -columnspan 2
+	geometry -row 2
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Pmw
+	data ID _ComboBox_3
+	data MASTER {}
+	data TYPE {Pmw ComboBox}
+}
+widget {Pmw ComboBox} _ComboBox_4 {
+	configure -selectioncommand {}
+	geometry -column 2
+	geometry -columnspan 2
+	geometry -row 4
+	geometry -rowspan 1
+	geometry -sticky {}
+	data GROUP Pmw
+	data ID _ComboBox_4
+	data MASTER {}
+	data TYPE {Pmw ComboBox}
+}
+menu {Menu menu} MENU {
+	data MASTER {}
+	data level 0
+}
+menu {Menu cascade} menuitem3 {
+	configure -label versions
+	data MASTER MENU
+}
+menu {Menu cascade} menuitem6 {
+	configure -label 汉化
+	data MASTER MENU
+}
+menu {Menu cascade} menuitem7 {
+	configure -label About
+	data MASTER MENU
+}
+menu {Menu command} menuitem9 {
+	configure -label {Teamliquid Page}
+	data MASTER menuitem7
+}
+menu {Menu command} menuitem10 {
+	configure -label {PLU Page}
+	data MASTER menuitem7
+}
+menu {Menu command} menuitem11 {
+	configure -label {Project Page}
+	data MASTER menuitem7
+}
+menu {Menu separator} menuitem12 {
+	data MASTER menuitem7
+}
+menu {Menu command} menuitem13 {
+	configure -label {MIT License}
+	data MASTER menuitem7
+}
+menu {Menu command} menuitem14 {
+	configure -label {Buy me a beer!}
+	data MASTER menuitem7
+}
+menu {Menu command} menuitem15 {
+	configure -label About
+	data MASTER menuitem7
+}
+

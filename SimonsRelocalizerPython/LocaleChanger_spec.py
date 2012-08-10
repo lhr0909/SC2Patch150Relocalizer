@@ -13,6 +13,7 @@ import unittest
 from LocaleChanger import *
 import Variables
 import Settings
+import shutil
 
 class LocaleChangerSpec(unittest.TestCase):
     def setUp(self):
@@ -20,22 +21,51 @@ class LocaleChangerSpec(unittest.TestCase):
         Variables.currentAsset = "enUS"
         Variables.newLocale = "zhTW"
         Variables.newAsset = "zhTW"
-        Settings.SC2_LOCATION = "fixtures/"
-        Settings.SC2_VARTXT_LOCATION = "fixtures/Variables.txt"
+        Settings.SC2_LOCATION = "tmp/fixtures/"
+        Settings.SC2_VARTXT_LOCATION = "tmp/fixtures/Variables.txt"
+        shutil.copytree("fixtures", "tmp/fixtures")
+
 
     def test_changeAgentDB(self):
-        agentDB = open("fixtures/.agent.db")
+        """
+        Test changeAgentDB function
+        """
+        agentDB = open(Settings.SC2_LOCATION + ".agent.db")
         content = agentDB.read()
         self.assertEqual(content.count("enUS"), 3)
         self.assertEqual(content.count("enus"), 2)
         agentDB.close()
+
         changeAgentDB("zhTW")
-        agentDB = open("fixtures/.agent.db")
+
+        agentDB = open(Settings.SC2_LOCATION + ".agent.db")
         content = agentDB.read()
         self.assertEqual(content.count("zhTW"), 3)
         self.assertEqual(content.count("zhtw"), 2)
         agentDB.close()
 
+    def test_changeLauncherDB(self):
+        """
+        Test change LauncherDB function
+        """
+        LauncherDB = open(Settings.SC2_LOCATION + "Launcher.db")
+        content = LauncherDB.read()
+        self.assertEqual(content.count("enUS"), 1)
+        LauncherDB.close()
+
+        changeLauncherDB("zhTW")
+
+        LauncherDB = open(Settings.SC2_LOCATION + "Launcher.db")
+        content = LauncherDB.read()
+        self.assertEqual(content.count("zhTW"), 1)
+        LauncherDB.close()
+
+    def tearDown(self):
+        shutil.rmtree("tmp")
+
+
 
 if __name__ == "__main__":
-    unittest.main()
+    #unittest.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSequenceFunctions)
+    unittest.TextTestRunner(verbosity=2).run(suite)
