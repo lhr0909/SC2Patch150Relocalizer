@@ -11,15 +11,13 @@
 
 import Settings
 import Constants
+import shutil
+import os
 
 def changeAgentDB(newLocale):
     agentDB = open(Settings.SC2_LOCATION + ".agent.db", "r")
     content = agentDB.read()
-    for locale in Constants.LOCALES:
-        if locale in content:
-            content = content.replace(locale, newLocale)
-        if locale.lower() in content:
-            content = content.replace(locale.lower(), newLocale.lower())
+    content = changeLocale(content, newLocale)
     agentDB.close()
     agentDB = open(Settings.SC2_LOCATION + ".agent.db", "w")
     agentDB.write(content)
@@ -28,12 +26,21 @@ def changeAgentDB(newLocale):
 def changeLauncherDB(newLocale):
     launcherDB = open(Settings.SC2_LOCATION + "Launcher.db", "r")
     content = launcherDB.read()
+    content = changeLocale(content, newLocale)
+    launcherDB.close()
+    launcherDB = open(Settings.SC2_LOCATION + "Launcher.db", "w")
+    launcherDB.write(content)
+    launcherDB.close()
+
+def changeProductSC2Archive(newLocale):
+    path = Settings.SC2_LOCATION + "Mods/Core.SC2Mod/Product.SC2Archive"
+    os.remove(path)
+    shutil.copyfile(Constants.PRODUCT_SC2ARCHIVE_LOCATION + newLocale, path)
+
+def changeLocale(content, newLocale):
     for locale in Constants.LOCALES:
         if locale in content:
             content = content.replace(locale, newLocale)
         if locale.lower() in content:
             content = content.replace(locale.lower(), newLocale.lower())
-    launcherDB.close()
-    launcherDB = open(Settings.SC2_LOCATION + "Launcher.db", "w")
-    launcherDB.write(content)
-    launcherDB.close()
+    return content

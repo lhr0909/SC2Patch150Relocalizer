@@ -14,3 +14,4 @@
 LOCALES = ["deDE", "enGB", "enSG", "enUS", "esES", "esMX", "frFR", "itIT", "koKR", "plPL", "ptBR", "ruRU", "zhCN", "zhTW"]
 VERSION_COUNT = 12
 VERSTION_NUMBER = "v2.0.0"
+PRODUCT_SC2ARCHIVE_LOCATION = "EmbeddedResource/Product.SC2Archive."

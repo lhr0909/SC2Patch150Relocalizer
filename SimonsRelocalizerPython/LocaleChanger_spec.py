@@ -13,6 +13,7 @@ import unittest
 from LocaleChanger import *
 import Variables
 import Settings
+import Constants
 import shutil
 
 class LocaleChangerSpec(unittest.TestCase):
@@ -59,6 +60,28 @@ class LocaleChangerSpec(unittest.TestCase):
         content = LauncherDB.read()
         self.assertEqual(content.count("zhTW"), 1)
         LauncherDB.close()
+
+    def test_changeProductSC2Archive(self):
+        """
+        Test change ProductSC2Archive function
+        """
+        enUSArchive = open(Constants.PRODUCT_SC2ARCHIVE_LOCATION + "enUS", "rb")
+        enUSBytes = enUSArchive.read()
+        enUSArchive.close()
+        ProductSC2Archive = open(Settings.SC2_LOCATION + "Mods/Core.SC2Mod/Product.SC2Archive", "rb")
+        bytesBefore = ProductSC2Archive.read()
+        ProductSC2Archive.close()
+        self.assertEqual(enUSBytes, bytesBefore)
+
+        changeProductSC2Archive("zhTW")
+
+        zhTWArchive = open(Constants.PRODUCT_SC2ARCHIVE_LOCATION + "zhTW", "rb")
+        zhTWBytes = zhTWArchive.read()
+        zhTWArchive.close()
+        ProductSC2Archive = open(Settings.SC2_LOCATION + "Mods/Core.SC2Mod/Product.SC2Archive", "rb")
+        bytesAfter = ProductSC2Archive.read()
+        ProductSC2Archive.close()
+        self.assertEqual(zhTWBytes, bytesAfter)
 
     def tearDown(self):
         shutil.rmtree("tmp")
