@@ -14,16 +14,28 @@
 import os
 import sys
 import time
+import urllib
 from zipfile import ZipFile
+
+ZIP_LOCATION = os.path.expanduser("~/SimonsRelocalizerMac.zip")
+RELOCALIZER_LOCATION = os.path.expanduser("~/SimonsRelocalizerMac")
+LOCALES = ["deDE", "enGB", "enSG", "enUS", "esES", "esMX", "frFR", "itIT", "koKR", "plPL", "ptBR", "ruRU", "zhCN", "zhTW"]
 
 def clearConsole():
     os.system('clear')
 
 def downloadFile():
-    return
+    print "Downloading File..."
+    urllib.urlretrieve("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizePython.v0.0.1.zip", ZIP_LOCATION)
+    print "Download Complete."
 
 def unzipFile():
-    return
+    print "Unzipping File..."
+    if not os.path.exists(RELOCALIZER_LOCATION):
+        os.makedirs(RELOCALIZER_LOCATION)
+    with ZipFile(ZIP_LOCATION, "r") as relocalizerZip:
+        relocalizerZip.extractall(RELOCALIZER_LOCATION)
+    print "File Unzipped."
 
 def printListOfLanguages():
     clearConsole()
@@ -44,10 +56,6 @@ def printListOfLanguages():
     print "zhTW --- KR/TW - Traditional Chinese"
     print "enSG --- SEA - English (Singapore)"
     print
-
-ZIP_LOCATION = os.path.expanduser("~/SimonsRelocalizerMac.zip")
-RELOCALIZER_LOCATION = os.path.expanduser("~/SimonsRelocalizerMac")
-LOCALES = ["deDE", "enGB", "enSG", "enUS", "esES", "esMX", "frFR", "itIT", "koKR", "plPL", "ptBR", "ruRU", "zhCN", "zhTW"]
 
 if __name__ == "__main__":
     clearConsole()
@@ -70,8 +78,11 @@ if __name__ == "__main__":
                 newAsset = raw_input("Please put in the new voice asset you want to change to (xxXX): ")
                 if newAsset not in LOCALES:
                     print "Invalid input!"
-
-            execfile(RELOCALIZER_LOCATION + "/Relocalize.py", locals={"newLocale":newLocale, "newAsset":newAsset})
+            print "Running Script..."
+            sys.path.append(RELOCALIZER_LOCATION)
+            os.chdir(RELOCALIZER_LOCATION)
+            execfile(RELOCALIZER_LOCATION + "/Relocalize.py", {}, {"newLocale":newLocale, "newAsset":newAsset})
+            print "Relocalization Finished. Thanks for using Simon's Relocalizer for Mac! Please visit http://www.teamliquid.net/forum/viewmessage.php?topic_id=357860 to check updates for the Mac version!"
         else:
             unzipFile()
     else:
@@ -79,6 +90,7 @@ if __name__ == "__main__":
         if response.startswith("y") or response.startswith("Y"):
             downloadFile()
             unzipFile()
+            print "Please restart the program to start using the relocalizer! Thanks!"
         else:
             print "Sorry but you do need to download all the files necessary to be able to use the relocalizer!"
             sys.exit(1)
