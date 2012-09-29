@@ -9,6 +9,8 @@
 
 from PyQt4 import QtCore, QtGui
 
+import sys
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -39,7 +41,7 @@ class Ui_RelocalizerMain(object):
         self.relocalizeButton.setGeometry(QtCore.QRect(390, 0, 200, 174))
         self.relocalizeButton.setText(_fromUtf8(""))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("resources/new_relocalize_button.jpg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(sys._MEIPASS, _fromUtf8("resources/new_relocalize_button.jpg"))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.relocalizeButton.setIcon(icon1)
         self.relocalizeButton.setIconSize(QtCore.QSize(195, 169))
         self.relocalizeButton.setObjectName(_fromUtf8("relocalizeButton"))
