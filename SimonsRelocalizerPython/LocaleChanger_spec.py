@@ -11,17 +11,12 @@
 
 import unittest
 from LocaleChanger import *
-import Variables
 import Settings
 import Constants
 import shutil
 
 class LocaleChangerSpec(unittest.TestCase):
     def setUp(self):
-        Variables.currentLocale = "enUS"
-        Variables.currentAsset = "enUS"
-        Variables.newLocale = "zhTW"
-        Variables.newAsset = "zhTW"
         Settings.SC2_LOCATION = "tmp/fixtures/"
         Settings.SC2_VARTXT_LOCATION = "tmp/fixtures/Variables.txt"
         shutil.copytree("fixtures", "tmp/fixtures")
@@ -82,6 +77,25 @@ class LocaleChangerSpec(unittest.TestCase):
         bytesAfter = ProductSC2Archive.read()
         ProductSC2Archive.close()
         self.assertEqual(zhTWBytes, bytesAfter)
+
+    def test_changeVarTxt(self):
+        """
+        Test change Variables.txt function
+        """
+        oldVarTxt = open(Settings.SC2_VARTXT_LOCATION, "r")
+        VarTxtLines = oldVarTxt.readlines()
+        oldVarTxt.close()
+        self.assertTrue("localeiddata=enUS\n" in VarTxtLines)
+        self.assertTrue("localeidassets=enUS\n" in VarTxtLines)
+
+        changeVarTxt("zhTW", "enGB")
+
+        newVarTxt = open(Settings.SC2_VARTXT_LOCATION, "r")
+        VarTxtLines = newVarTxt.readlines()
+        newVarTxt.close()
+        self.assertTrue("localeiddata=zhTW\n" in VarTxtLines)
+        self.assertTrue("localeidassets=enGB\n" in VarTxtLines)
+
 
     def tearDown(self):
         shutil.rmtree("tmp")

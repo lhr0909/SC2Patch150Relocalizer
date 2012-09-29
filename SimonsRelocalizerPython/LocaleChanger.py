@@ -44,3 +44,16 @@ def changeLocale(content, newLocale):
         if locale.lower() in content:
             content = content.replace(locale.lower(), newLocale.lower())
     return content
+
+def changeVarTxt(newLocale, newAsset):
+    VarTxt = open(Settings.SC2_VARTXT_LOCATION, "r")
+    lines = VarTxt.readlines()
+    VarTxt.close()
+    for i in range(len(lines)):
+        if lines[i].startswith("localeiddata="):
+            lines[i] = "localeiddata=" + newLocale + "\n"
+        elif lines[i].startswith("localeidassets="):
+            lines[i] = "localeidassets=" + newAsset + "\n"
+    VarTxt = open(Settings.SC2_VARTXT_LOCATION, "w")
+    VarTxt.write("".join(lines))
+    VarTxt.close()
