@@ -8,7 +8,7 @@ namespace SimonsRelocalizer
 {
     internal class UpdateManager
     {
-        private static string url = "https://raw.github.com/lhr0909/SC2Patch150Relocalizer/master/version.txt";
+        private static string url = "https://raw.github.com/lhr0909/SC2Patch150Relocalizer/master/versions.txt";
         private static int versionCount = 0;
         private static string versionNumber = "";
         private static string downloadURL = "";
