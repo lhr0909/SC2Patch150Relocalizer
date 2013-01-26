@@ -1,2 +1,3 @@
-11
-v1.1.1
+12
+v1.2.0.zip/../../../../lhr0909/SC2Patch150Relocalizer/blob/master/SimonsRelocalizer.v1.2.0.zip?raw=true&ext=
+http://dl.dropbox.com/u/23413195/SimonsRelocalizer.v1.2.0.zip

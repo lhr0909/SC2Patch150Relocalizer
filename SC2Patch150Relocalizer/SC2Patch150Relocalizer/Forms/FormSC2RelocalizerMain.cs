@@ -376,5 +376,11 @@ namespace SimonsRelocalizer
             Settings.Default.Save();
             CheckUpdate();
         }
+
+        private void addRegionxmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocaleChanger.AddRegionXML();
+            MessageBox.Show("Successfully added regions.xml!\nYou should be able to see the regions.xml!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

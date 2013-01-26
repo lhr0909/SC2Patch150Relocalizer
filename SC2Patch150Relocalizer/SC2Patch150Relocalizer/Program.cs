@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
@@ -63,35 +65,78 @@ namespace SimonsRelocalizer
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            DialogResult result = DialogResult.Abort;
+            DialogResult result = DialogResult.Yes;
             try
             {
-                result = MessageBox.Show("Whoops! Please contact the developers with the"
-                  + " following information:\n\n" + e.Exception.Message + e.Exception.StackTrace,
-                  "Application Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
+                result =
+                    MessageBox.Show(
+                        "There is an error occurred.\n"
+                        + "Would you like to email the following email message to Simon?\n\n"
+                        + e.Exception.Message + e.Exception.StackTrace, 
+                        "Application Error", 
+                        MessageBoxButtons.YesNo, 
+                        MessageBoxIcon.Stop);
             }
             finally
             {
-                if (result == DialogResult.Abort)
+                if (result == DialogResult.Yes)
                 {
-                    Application.Exit();
+                    EmailException(e.Exception.Message, e.Exception.StackTrace);
                 }
+                Application.Exit();
             }
         }
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            DialogResult result = DialogResult.Yes;
+            Exception ex = new Exception();
             try
             {
-                Exception ex = (Exception)e.ExceptionObject;
-
-                MessageBox.Show("Whoops! Please contact the developers with the following"
-                      + " information:\n\n" + ex.Message + ex.StackTrace,
-                      "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                ex = (Exception)e.ExceptionObject;
+                result =
+                    MessageBox.Show(
+                        "There is an error occurred.\n"
+                        + "Would you like to email the following email message to Simon?\n\n"
+                        + ex.Message + ex.StackTrace,
+                        "Application Error",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Stop);
             }
             finally
             {
+                if (result == DialogResult.Yes)
+                {
+                    EmailException(ex.Message, ex.StackTrace);
+                }
                 Application.Exit();
+            }
+        }
+
+        private static void EmailException(string errorMessage, string stackTrace)
+        {
+            var fromAddress = new MailAddress("simons.relocalizer.sc2@gmail.com", "Simon's Relocalizer");
+            var toAddress = new MailAddress("no.lhr0909@gmail.com", "Simon");
+            const string fromPassword = "KL3kBGVPxY";
+            const string subject = "Simon's Relocalizer Exception Message";
+            string body = errorMessage + "\n\n" + stackTrace;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
             }
         }
 
