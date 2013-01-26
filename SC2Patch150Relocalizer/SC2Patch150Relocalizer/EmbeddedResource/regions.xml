@@ -1,0 +1,10 @@
+﻿<regions>
+  <region displayname="AUTHENTICATION_SG_REGION" hostname="sg"
+		allowedProductLocales="all" localesThatDefaultToThisRegion="enSG"/>
+  <region displayname="AUTHENTICATION_US_REGION" hostname="us"
+		allowedProductLocales="all" localesThatDefaultToThisRegion="enUS"/>
+  <region displayname="AUTHENTICATION_EU_REGION" hostname="eu"
+		allowedProductLocales="all" localesThatDefaultToThisRegion="enGB"/>
+  <region displayname="AUTHENTICATION_KR_REGION" hostname="kr"
+		allowedProductLocales="all" localesThatDefaultToThisRegion="koKR"/>
+</regions>

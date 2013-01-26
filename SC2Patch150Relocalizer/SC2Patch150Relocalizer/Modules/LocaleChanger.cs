@@ -3,26 +3,47 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using SimonsRelocalizer.Properties;
 
-namespace SimonsRelocalizer
+namespace SimonsRelocalizer.Modules
 {
     class LocaleChanger
     {
 
         public static void RunRelocalize()
         {
+            AddRegionXML();
             ChangeAgentDB(Program.currentLocale, Program.newLocale);
             ChangeLauncherDB(Program.currentLocale, Program.newLocale);
             ChangeProductSC2Archive(Program.newLocale);
             ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
         }
 
+        public static void AddRegionXML()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var filePath = Settings.Default.SC2Location + "regions.xml";
+            if (File.Exists(filePath)) File.Delete(filePath);
+            var dest = File.Open(filePath, FileMode.OpenOrCreate);
+            var names = assembly.GetManifestResourceNames();
+            foreach (string name in names)
+            {
+                if (name.EndsWith("regions.xml"))
+                {
+                    var regionsFile = assembly.GetManifestResourceStream(name);
+                    if (regionsFile != null) regionsFile.CopyTo(dest);
+                    dest.Close();
+                    regionsFile.Close();
+                }
+            }
+        }
+
         public static void ChangeAgentDB(string originalLanguage, string relocalizeLanguage)
         {
             //Change .agent.db
             var filePath = Settings.Default.SC2Location + ".agent.db";
-            BackupFile(filePath);
+            //BackupFile(filePath);
             var text = File.ReadAllText(filePath);
             text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
+            File.Delete(filePath);
             File.WriteAllText(filePath, text);
         }
 
@@ -30,7 +51,7 @@ namespace SimonsRelocalizer
         {
             //Change Launcher.db
             var filePath = Settings.Default.SC2Location + "Launcher.db";
-            BackupFile(filePath);
+            //BackupFile(filePath);
             var text = File.ReadAllText(filePath);
             text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
             File.WriteAllText(filePath, text);
@@ -44,7 +65,7 @@ namespace SimonsRelocalizer
 
             var assembly = Assembly.GetExecutingAssembly();
             var filePath = Settings.Default.SC2Location + "Mods\\Core.SC2Mod\\Product.SC2Archive";
-            BackupFile(filePath);
+            //BackupFile(filePath);
             File.Delete(filePath);
             var dest = File.Open(filePath, FileMode.OpenOrCreate);
             var names = assembly.GetManifestResourceNames();
@@ -64,7 +85,7 @@ namespace SimonsRelocalizer
         {
             //change variable.txt
             var sc2VarLocation = Settings.Default.SC2VariablesLocation;
-            BackupFile(sc2VarLocation);
+            //BackupFile(sc2VarLocation);
             var originalLanguageSearch = "localeiddata=" + originalLanguage;
             var relocalizeLang = "localeiddata=" + relocalizeLanguage; 
             var originalAssetSearch = "localeidassets=" + originalAsset;
@@ -101,6 +122,7 @@ namespace SimonsRelocalizer
             return text;
         }
 
+        /*
         private static void BackupFile(string filePath)
         {
             //make backups up to 5 previous changes
@@ -125,6 +147,7 @@ namespace SimonsRelocalizer
                 File.Copy(filePath, filePath + ".version" + version);
             }
         }
+        */
 
         public static string GetLocaleFromLanguageListItem(string item)
         {

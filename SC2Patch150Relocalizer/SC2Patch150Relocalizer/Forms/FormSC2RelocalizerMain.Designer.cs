@@ -66,7 +66,7 @@
             // buttonRelocalize
             // 
             this.buttonRelocalize.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.relocalize_button;
+            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.new_relocalize_button;
             this.buttonRelocalize.Location = new System.Drawing.Point(325, 27);
             this.buttonRelocalize.Name = "buttonRelocalize";
             this.buttonRelocalize.Size = new System.Drawing.Size(190, 161);

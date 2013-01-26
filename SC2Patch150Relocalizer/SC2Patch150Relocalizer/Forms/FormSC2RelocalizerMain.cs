@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using SimonsRelocalizer.Modules;
 using SimonsRelocalizer.Properties;
 
 namespace SimonsRelocalizer
@@ -373,6 +374,7 @@ namespace SimonsRelocalizer
                 Settings.Default.language = "Chinese";
             }
             Settings.Default.Save();
+            CheckUpdate();
         }
     }
 }
