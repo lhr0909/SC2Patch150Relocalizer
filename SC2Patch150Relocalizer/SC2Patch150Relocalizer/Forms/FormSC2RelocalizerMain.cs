@@ -127,7 +127,7 @@ namespace SimonsRelocalizer
         {
             if (versionsToolStripMenuItem.ForeColor == System.Drawing.Color.Blue)
             {
-                Process.Start("https://github.com/downloads/lhr0909/SC2Patch150Relocalizer/SimonsRelocalizer." + UpdateManager.GetNewVersionNumber() + ".zip");
+                Process.Start(UpdateManager.GetDownloadURL());
             }
         }
 

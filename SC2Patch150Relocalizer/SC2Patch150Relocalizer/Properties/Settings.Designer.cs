@@ -61,7 +61,7 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("13")]
         public int VersionCount {
             get {
                 return ((int)(this["VersionCount"]));
@@ -70,7 +70,7 @@ namespace SimonsRelocalizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("v1.2.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v1.2.1")]
         public string VersionNumber {
             get {
                 return ((string)(this["VersionNumber"]));
