@@ -231,7 +231,7 @@ namespace SimonsRelocalizer
             var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
             if (updatesAvaiable)
             {
-                versionsToolStripMenuItem.Text = updateAvailableText + UpdateManager.GetNewVersionNumber() + clickMe;
+                versionsToolStripMenuItem.Text = updateAvailableText + clickMe;
                 versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
             }
             else
