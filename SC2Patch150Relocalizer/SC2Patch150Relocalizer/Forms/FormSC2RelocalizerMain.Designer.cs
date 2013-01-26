@@ -60,7 +60,6 @@
             this.labelPing = new System.Windows.Forms.Label();
             this.timerCheckPing = new System.Windows.Forms.Timer(this.components);
             this.chkPing = new System.Windows.Forms.CheckBox();
-            this.addRegionxmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,6 +164,11 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.versionsToolStripMenuItem,
+            this.languageChangeToolStrip,
+            this.aboutToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -337,13 +341,6 @@
             this.chkPing.UseVisualStyleBackColor = true;
             this.chkPing.CheckedChanged += new System.EventHandler(this.chkPing_CheckedChanged);
             // 
-            // addRegionxmlToolStripMenuItem
-            // 
-            this.addRegionxmlToolStripMenuItem.Name = "addRegionxmlToolStripMenuItem";
-            this.addRegionxmlToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.addRegionxmlToolStripMenuItem.Text = "Add region.&xml";
-            this.addRegionxmlToolStripMenuItem.Click += new System.EventHandler(this.addRegionxmlToolStripMenuItem_Click);
-            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,7 +410,6 @@
         private System.Windows.Forms.CheckBox chkPing;
         private System.Windows.Forms.ToolStripMenuItem mITLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageChangeToolStrip;
-        private System.Windows.Forms.ToolStripMenuItem addRegionxmlToolStripMenuItem;
     }
 }
 
