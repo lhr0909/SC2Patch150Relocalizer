@@ -16,6 +16,10 @@ namespace SimonsRelocalizer
 
         public static void CheckPing(string hostname)
         {
+            if (hostname == null)
+            {
+                return;
+            }
             int failCount = 0;
             result = new List<IPAddress>();
             pingTimeout = new List<long>();
@@ -55,19 +59,19 @@ namespace SimonsRelocalizer
 
         public static string GetBattleNetHostname(string region)
         {
-            if (region.Equals("AM"))
+            if (region.Equals("us"))
             {
                 return "us.logon.battle.net";
             }
-            if (region.Equals("EU"))
+            if (region.Equals("eu"))
             {
                 return "eu.logon.battle.net";
             }
-            if (region.Equals("SEA"))
+            if (region.Equals("sg"))
             {
                 return "sg.logon.battle.net";
             }
-            if (region.Equals("KR/TW"))
+            if (region.Equals("kr"))
             {
                 return "kr.logon.battle.net";
             }

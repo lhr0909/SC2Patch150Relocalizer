@@ -57,10 +57,11 @@ namespace SimonsRelocalizer
                 ChangeToEnglish();
             }
             Text = Text + Settings.Default.VersionNumber;
-            Size = new System.Drawing.Size(Size.Width, 225);
+            Size = new System.Drawing.Size(Size.Width, 260);
             SettingsManager.CheckSc2Location();
             SettingsManager.CheckVarTxtLocation();
             SettingsManager.checkCurrentLocale();
+            SettingsManager.checkCurrentRegion();
             ChangeSettingTextBoxesValues();
             ChangeComboListValues();
             ChangeCheckBoxesValues();
@@ -80,13 +81,20 @@ namespace SimonsRelocalizer
             Settings.Default.Save();
         }
 
-        private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelPing.Text = checkingPingMessage;
-            Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
-            Program.pingRegion = LocaleChanger.GetRegionFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
-            comboAsset.SelectedIndex = comboLocale.SelectedIndex;
+            Program.newRegion = LocaleChanger.GetRegionFromRegionListItem(Program.regionList[comboRegion.SelectedIndex]);
+            Program.pingRegion = LocaleChanger.GetRegionFromRegionListItem(Program.regionList[comboRegion.SelectedIndex]);
+
             timerCheckPing.Enabled = true;
+        }
+
+        private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
+            comboAsset.SelectedIndex = comboLocale.SelectedIndex;
         }
 
         private void comboAsset_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,7 +162,7 @@ namespace SimonsRelocalizer
         private void timerScrollWindow_Tick(object sender, EventArgs e)
         {
             Size = new System.Drawing.Size(Size.Width, Size.Height + Program.scrollOffset);
-            if ((Size.Height >= 325) || (Size.Height <= 225))
+            if ((Size.Height >= 375) || (Size.Height <= 260))
             {
                 timerScrollWindow.Enabled = false;
                 Program.scrollOffset = -Program.scrollOffset;
@@ -231,7 +239,7 @@ namespace SimonsRelocalizer
             var updatesAvaiable = UpdateManager.CheckIfUpdatesAvailable();
             if (updatesAvaiable)
             {
-                versionsToolStripMenuItem.Text = updateAvailableText + clickMe;
+                versionsToolStripMenuItem.Text = updateAvailableText + UpdateManager.GetNewVersionNumber() + clickMe;
                 versionsToolStripMenuItem.ForeColor = System.Drawing.Color.Blue;
             }
             else
@@ -254,6 +262,26 @@ namespace SimonsRelocalizer
                 {
                     comboAsset.SelectedIndex = i;
                 }
+            }
+            if (Program.currentRegion.Equals("us"))
+            {
+                comboRegion.SelectedIndex = 1;
+            }
+            else if (Program.currentRegion.Equals("eu"))
+            {
+                comboRegion.SelectedIndex = 2;
+            }
+            else if (Program.currentRegion.Equals("sg"))
+            {
+                comboRegion.SelectedIndex = 3;
+            }
+            else if (Program.currentRegion.Equals("kr"))
+            {
+                comboRegion.SelectedIndex = 4;
+            }
+            else
+            {
+                comboRegion.SelectedIndex = 0;
             }
         }
 
@@ -341,7 +369,7 @@ namespace SimonsRelocalizer
             aboutToolStripMenuItem.Text = "&About";
             versionsToolStripMenuItem.Text = "Versions";
             browserSC2VarFolder.Description = "Please select SC2 Variable.txt Location:";
-            label2.Text = "Choose Display Language + Region:";
+            label2.Text = "Choose Display Language:";
             chkLaunchSC2.Text = "Launch SC2 after Relocalization";
             label1.Text = "Choose Voice Asset:";
             browserSC2Folder.Description = "Please select SC2 Installation Location";

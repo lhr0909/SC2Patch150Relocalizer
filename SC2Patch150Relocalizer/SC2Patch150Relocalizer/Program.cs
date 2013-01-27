@@ -29,9 +29,19 @@ namespace SimonsRelocalizer
                                                   "SEA - English (Singapore) - enSG"
                                               };
 
+        public static string[] regionList = {
+                                                "Default",
+                                                "AM (North America, Latin America)",
+                                                "EU (Europe)",
+                                                "SEA (Southeast Asia + Australia)",
+                                                "KR (Korea + Taiwan)",
+                                                "CN (China)"
+                                            };
         public static FormSC2RelocalizerMain mainForm;
         public static FormRunAsAdmin runAsAdminForm;
 
+        public static string currentRegion;
+        public static string newRegion;
         public static string currentLocale;
         public static string currentAsset;
         public static string newLocale;

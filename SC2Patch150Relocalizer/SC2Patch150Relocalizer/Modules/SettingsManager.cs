@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Win32;
 using SimonsRelocalizer.Properties;
 
 namespace SimonsRelocalizer
@@ -62,6 +63,12 @@ namespace SimonsRelocalizer
                     Program.currentLocale = line.Substring(line.Length - 4, 4);
                 }
             }
+        }
+
+        public static void checkCurrentRegion()
+        {
+            RegistryKey lastPortal = Registry.CurrentUser.OpenSubKey("Software\\Blizzard Entertainment\\Battle.net\\S2", false);
+            Program.currentRegion = (string) lastPortal.GetValue("LastPortal-" + Program.currentLocale);
         }
     }
 }

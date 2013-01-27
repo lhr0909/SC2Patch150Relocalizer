@@ -60,14 +60,16 @@
             this.labelPing = new System.Windows.Forms.Label();
             this.timerCheckPing = new System.Windows.Forms.Timer(this.components);
             this.chkPing = new System.Windows.Forms.CheckBox();
+            this.comboRegion = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRelocalize
             // 
-            this.buttonRelocalize.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRelocalize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.new_relocalize_button;
-            this.buttonRelocalize.Location = new System.Drawing.Point(325, 27);
+            this.buttonRelocalize.Location = new System.Drawing.Point(325, 55);
             this.buttonRelocalize.Name = "buttonRelocalize";
             this.buttonRelocalize.Size = new System.Drawing.Size(190, 161);
             this.buttonRelocalize.TabIndex = 15;
@@ -82,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 82);
+            this.label1.Location = new System.Drawing.Point(50, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 17;
@@ -91,7 +93,7 @@
             // chkLaunchSC2
             // 
             this.chkLaunchSC2.AutoSize = true;
-            this.chkLaunchSC2.Location = new System.Drawing.Point(53, 125);
+            this.chkLaunchSC2.Location = new System.Drawing.Point(53, 166);
             this.chkLaunchSC2.Name = "chkLaunchSC2";
             this.chkLaunchSC2.Size = new System.Drawing.Size(178, 17);
             this.chkLaunchSC2.TabIndex = 18;
@@ -102,11 +104,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 37);
+            this.label2.Location = new System.Drawing.Point(50, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 13);
+            this.label2.Size = new System.Drawing.Size(134, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Choose Display Language + Region:";
+            this.label2.Text = "Choose Display Language:";
             // 
             // comboAsset
             // 
@@ -127,7 +129,7 @@
             "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
-            this.comboAsset.Location = new System.Drawing.Point(53, 98);
+            this.comboAsset.Location = new System.Drawing.Point(53, 139);
             this.comboAsset.Name = "comboAsset";
             this.comboAsset.Size = new System.Drawing.Size(263, 21);
             this.comboAsset.TabIndex = 21;
@@ -152,7 +154,7 @@
             "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
-            this.comboLocale.Location = new System.Drawing.Point(53, 53);
+            this.comboLocale.Location = new System.Drawing.Point(53, 94);
             this.comboLocale.Name = "comboLocale";
             this.comboLocale.Size = new System.Drawing.Size(263, 21);
             this.comboLocale.TabIndex = 22;
@@ -245,7 +247,7 @@
             // label3
             // 
             this.label3.Image = global::SimonsRelocalizer.Properties.Resources.relocalization;
-            this.label3.Location = new System.Drawing.Point(14, 46);
+            this.label3.Location = new System.Drawing.Point(9, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 28);
             this.label3.TabIndex = 25;
@@ -253,7 +255,7 @@
             // label4
             // 
             this.label4.Image = global::SimonsRelocalizer.Properties.Resources.voice_asset;
-            this.label4.Location = new System.Drawing.Point(14, 91);
+            this.label4.Location = new System.Drawing.Point(14, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 28);
             this.label4.TabIndex = 26;
@@ -261,7 +263,7 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(57, 148);
+            this.labelInfo.Location = new System.Drawing.Point(57, 189);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(0, 13);
             this.labelInfo.TabIndex = 27;
@@ -273,7 +275,7 @@
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(53, 165);
+            this.buttonSettings.Location = new System.Drawing.Point(53, 205);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Size = new System.Drawing.Size(263, 23);
             this.buttonSettings.TabIndex = 28;
@@ -283,7 +285,7 @@
             // 
             // buttonChangeSC2Location
             // 
-            this.buttonChangeSC2Location.Location = new System.Drawing.Point(17, 215);
+            this.buttonChangeSC2Location.Location = new System.Drawing.Point(17, 261);
             this.buttonChangeSC2Location.Name = "buttonChangeSC2Location";
             this.buttonChangeSC2Location.Size = new System.Drawing.Size(171, 23);
             this.buttonChangeSC2Location.TabIndex = 31;
@@ -293,7 +295,7 @@
             // 
             // buttonChangeSC2VariablesLocation
             // 
-            this.buttonChangeSC2VariablesLocation.Location = new System.Drawing.Point(17, 248);
+            this.buttonChangeSC2VariablesLocation.Location = new System.Drawing.Point(17, 294);
             this.buttonChangeSC2VariablesLocation.Name = "buttonChangeSC2VariablesLocation";
             this.buttonChangeSC2VariablesLocation.Size = new System.Drawing.Size(171, 23);
             this.buttonChangeSC2VariablesLocation.TabIndex = 32;
@@ -304,7 +306,7 @@
             // textSC2Location
             // 
             this.textSC2Location.Enabled = false;
-            this.textSC2Location.Location = new System.Drawing.Point(194, 215);
+            this.textSC2Location.Location = new System.Drawing.Point(194, 261);
             this.textSC2Location.Name = "textSC2Location";
             this.textSC2Location.Size = new System.Drawing.Size(321, 20);
             this.textSC2Location.TabIndex = 33;
@@ -312,7 +314,7 @@
             // textSC2VariablesLocation
             // 
             this.textSC2VariablesLocation.Enabled = false;
-            this.textSC2VariablesLocation.Location = new System.Drawing.Point(194, 251);
+            this.textSC2VariablesLocation.Location = new System.Drawing.Point(194, 297);
             this.textSC2VariablesLocation.Name = "textSC2VariablesLocation";
             this.textSC2VariablesLocation.Size = new System.Drawing.Size(321, 20);
             this.textSC2VariablesLocation.TabIndex = 34;
@@ -320,7 +322,7 @@
             // labelPing
             // 
             this.labelPing.AutoSize = true;
-            this.labelPing.Location = new System.Drawing.Point(231, 127);
+            this.labelPing.Location = new System.Drawing.Point(231, 168);
             this.labelPing.Name = "labelPing";
             this.labelPing.Size = new System.Drawing.Size(54, 13);
             this.labelPing.TabIndex = 35;
@@ -333,7 +335,7 @@
             // chkPing
             // 
             this.chkPing.AutoSize = true;
-            this.chkPing.Location = new System.Drawing.Point(53, 277);
+            this.chkPing.Location = new System.Drawing.Point(53, 323);
             this.chkPing.Name = "chkPing";
             this.chkPing.Size = new System.Drawing.Size(156, 17);
             this.chkPing.TabIndex = 36;
@@ -341,11 +343,38 @@
             this.chkPing.UseVisualStyleBackColor = true;
             this.chkPing.CheckedChanged += new System.EventHandler(this.chkPing_CheckedChanged);
             // 
+            // comboRegion
+            // 
+            this.comboRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRegion.FormattingEnabled = true;
+            this.comboRegion.Items.AddRange(new object[] {
+            "Default to Selected Locale",
+            "AM (North America, Latin America)",
+            "EU (Europe)",
+            "SEA (Southeast Asia + Australia)",
+            "KR (Korea + Taiwan)"});
+            this.comboRegion.Location = new System.Drawing.Point(53, 54);
+            this.comboRegion.Name = "comboRegion";
+            this.comboRegion.Size = new System.Drawing.Size(263, 21);
+            this.comboRegion.TabIndex = 37;
+            this.comboRegion.SelectedIndexChanged += new System.EventHandler(this.comboRegion_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(50, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Choose Region:";
+            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 300);
+            this.ClientSize = new System.Drawing.Size(524, 350);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboRegion);
             this.Controls.Add(this.chkPing);
             this.Controls.Add(this.labelPing);
             this.Controls.Add(this.textSC2VariablesLocation);
@@ -410,6 +439,8 @@
         private System.Windows.Forms.CheckBox chkPing;
         private System.Windows.Forms.ToolStripMenuItem mITLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageChangeToolStrip;
+        private System.Windows.Forms.ComboBox comboRegion;
+        private System.Windows.Forms.Label label5;
     }
 }
 

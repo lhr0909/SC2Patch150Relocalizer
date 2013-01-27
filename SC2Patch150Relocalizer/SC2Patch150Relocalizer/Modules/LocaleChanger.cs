@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Microsoft.Win32;
 using SimonsRelocalizer.Properties;
 
 namespace SimonsRelocalizer.Modules
@@ -15,6 +16,13 @@ namespace SimonsRelocalizer.Modules
             ChangeLauncherDB(Program.currentLocale, Program.newLocale);
             ChangeProductSC2Archive(Program.newLocale);
             ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
+            ChangeRegion(Program.newLocale, Program.newRegion);
+        }
+
+        private static void ChangeRegion(string locale, string region)
+        {
+            RegistryKey lastPortal = Registry.CurrentUser.OpenSubKey("Software\\Blizzard Entertainment\\Battle.net\\S2", true);
+            lastPortal.SetValue("LastPortal-" + locale, region, RegistryValueKind.String);
         }
 
         public static void AddRegionXML()
@@ -154,9 +162,25 @@ namespace SimonsRelocalizer.Modules
             return Regex.Split(item, " - ")[2];
         }
 
-        public static string GetRegionFromLanguageListItem(string item)
+        public static string GetRegionFromRegionListItem(string region)
         {
-            return Regex.Split(item, " - ")[0];
+            if (region.StartsWith("AM"))
+            {
+                return "us";
+            }
+            if (region.StartsWith("EU"))
+            {
+                return "eu";
+            }
+            if (region.StartsWith("SEA"))
+            {
+                return "sg";
+            }
+            if (region.StartsWith("KR"))
+            {
+                return "kr";
+            }
+            return Program.newLocale;
         }
     }
 }
