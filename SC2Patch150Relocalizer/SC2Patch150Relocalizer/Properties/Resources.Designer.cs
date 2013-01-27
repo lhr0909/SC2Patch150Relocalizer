@@ -251,13 +251,6 @@ namespace SimonsRelocalizer.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap run_as_admin {
-            get {
-                object obj = ResourceManager.GetObject("run_as_admin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to We need to know the SC2 Installation Location!.
         /// </summary>

@@ -1,15 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
-using SimonsRelocalizer.Forms;
+using System.Diagnostics;
 
 namespace SimonsRelocalizer
 {
-    static class Program
+    internal static class Program
     {
 
         public static string[] languageList = {
@@ -37,8 +38,8 @@ namespace SimonsRelocalizer
                                                 "KR (Korea + Taiwan)",
                                                 "CN (China)"
                                             };
+
         public static FormSC2RelocalizerMain mainForm;
-        public static FormRunAsAdmin runAsAdminForm;
 
         public static string currentRegion;
         public static string newRegion;
@@ -54,7 +55,7 @@ namespace SimonsRelocalizer
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             if (IsRunningAsLocalAdmin())
             {
@@ -67,10 +68,9 @@ namespace SimonsRelocalizer
             }
             else
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                runAsAdminForm = new FormRunAsAdmin();
-                Application.Run(runAsAdminForm);
+                RunElevated(Application.ExecutablePath);
+                //Close this instance because we have an elevated instance
+                Application.Exit();
             }
         }
 
@@ -83,9 +83,9 @@ namespace SimonsRelocalizer
                     MessageBox.Show(
                         "There is an error occurred.\n"
                         + "Would you like to email the following email message to Simon?\n\n"
-                        + e.Exception.Message + e.Exception.StackTrace, 
-                        "Application Error", 
-                        MessageBoxButtons.YesNo, 
+                        + e.Exception.Message + e.Exception.StackTrace,
+                        "Application Error",
+                        MessageBoxButtons.YesNo,
                         MessageBoxIcon.Stop);
             }
             finally
@@ -98,13 +98,13 @@ namespace SimonsRelocalizer
             }
         }
 
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             DialogResult result = DialogResult.Yes;
             Exception ex = new Exception();
             try
             {
-                ex = (Exception)e.ExceptionObject;
+                ex = (Exception) e.ExceptionObject;
                 result =
                     MessageBox.Show(
                         "There is an error occurred.\n"
@@ -127,9 +127,10 @@ namespace SimonsRelocalizer
         private static void EmailException(string errorMessage, string stackTrace)
         {
             var emailAddress = "Simon's Relocalizer";
-            if(InputBox.Show("Input Contact Email",
-                    "Please put in your email address if you would love to "
-                    + "get an email feedback from me. If not hit 'Cancel':", ref emailAddress) != DialogResult.OK)
+            if (InputBox.Show("Input Contact Email",
+                              "Please put in your email address if you would love to "
+                              + "get an email feedback from me. If not hit 'Cancel':", ref emailAddress) !=
+                DialogResult.OK)
             {
                 emailAddress = "Simon's Relocalizer";
             }
@@ -140,19 +141,19 @@ namespace SimonsRelocalizer
             string body = errorMessage + "\n\n" + stackTrace;
 
             var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
+                           {
+                               Host = "smtp.gmail.com",
+                               Port = 587,
+                               EnableSsl = true,
+                               DeliveryMethod = SmtpDeliveryMethod.Network,
+                               UseDefaultCredentials = false,
+                               Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                           };
             using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
+                                     {
+                                         Subject = subject,
+                                         Body = body
+                                     })
             {
                 smtp.Send(message);
             }
@@ -161,53 +162,68 @@ namespace SimonsRelocalizer
         private static bool IsRunningAsLocalAdmin()
         {
             return new WindowsPrincipal
-    (WindowsIdentity.GetCurrent()).IsInRole
-    (WindowsBuiltInRole.Administrator);
+                (WindowsIdentity.GetCurrent()).IsInRole
+                (WindowsBuiltInRole.Administrator);
         }
-    }
 
-    internal class InputBox
-    {
-        public static DialogResult Show(string title, string promptText, ref string value)
+        private static void RunElevated(string fileName)
         {
-            Form form = new Form();
-            Label label = new Label();
-            TextBox textBox = new TextBox();
-            Button buttonOk = new Button();
-            Button buttonCancel = new Button();
+            ProcessStartInfo processInfo = new ProcessStartInfo();
+            processInfo.Verb = "runas";
+            processInfo.FileName = fileName;
+            try
+            {
+                Process.Start(processInfo);
+            }
+            catch (Win32Exception)
+            {
+                //Do nothing. Probably the user canceled the UAC window
+            }
+        }
 
-            form.Text = title;
-            label.Text = promptText;
-            textBox.Text = value;
+        internal class InputBox
+        {
+            public static DialogResult Show(string title, string promptText, ref string value)
+            {
+                Form form = new Form();
+                Label label = new Label();
+                TextBox textBox = new TextBox();
+                Button buttonOk = new Button();
+                Button buttonCancel = new Button();
 
-            buttonOk.Text = "OK";
-            buttonCancel.Text = "Cancel";
-            buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
+                form.Text = title;
+                label.Text = promptText;
+                textBox.Text = value;
 
-            label.SetBounds(9, 20, 372, 13);
-            textBox.SetBounds(12, 36, 372, 20);
-            buttonOk.SetBounds(228, 72, 75, 23);
-            buttonCancel.SetBounds(309, 72, 75, 23);
+                buttonOk.Text = "OK";
+                buttonCancel.Text = "Cancel";
+                buttonOk.DialogResult = DialogResult.OK;
+                buttonCancel.DialogResult = DialogResult.Cancel;
 
-            label.AutoSize = true;
-            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
-            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                label.SetBounds(9, 20, 372, 13);
+                textBox.SetBounds(12, 36, 372, 20);
+                buttonOk.SetBounds(228, 72, 75, 23);
+                buttonCancel.SetBounds(309, 72, 75, 23);
 
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
+                label.AutoSize = true;
+                textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+                buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-            DialogResult dialogResult = form.ShowDialog();
-            value = textBox.Text;
-            return dialogResult;
+                form.ClientSize = new Size(396, 107);
+                form.Controls.AddRange(new Control[] {label, textBox, buttonOk, buttonCancel});
+                form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+                form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.AcceptButton = buttonOk;
+                form.CancelButton = buttonCancel;
+
+                DialogResult dialogResult = form.ShowDialog();
+                value = textBox.Text;
+                return dialogResult;
+            }
         }
     }
 }

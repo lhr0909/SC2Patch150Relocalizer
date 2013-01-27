@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Reflection;
-using System.Security.Permissions;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 using SimonsRelocalizer.Properties;
@@ -9,7 +8,6 @@ namespace SimonsRelocalizer.Modules
 {
     class LocaleChanger
     {
-        [PrincipalPermission(SecurityAction.Demand, Role = @"BUILTIN\Administrators")]
         public static void RunRelocalize()
         {
             AddRegionXML();
