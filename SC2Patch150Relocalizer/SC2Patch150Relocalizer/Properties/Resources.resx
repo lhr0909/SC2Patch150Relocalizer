@@ -121,8 +121,8 @@
     <value>Relocalization from aaaa to bbbb with asset from cccc to dddd is finished! Enjoy!</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="new_relocalize_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_relocalize_button.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="run_as_admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\run_as_admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="assetNotFoundMessageChinese" xml:space="preserve">
     <value>你没有xxxx版本的语音包。
@@ -146,6 +146,9 @@ Thanks apocalypse_ua for packing the icon!
 
 Author: Simon Liang
 August 2012</value>
+  </data>
+  <data name="ui_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ui_text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hideSettings" xml:space="preserve">
     <value>Hide Settings</value>
@@ -231,7 +234,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <data name="buttonAssetNotFoundHint" xml:space="preserve">
     <value>Click 'Relocalize' to download asset xxxx! -------&gt;</value>
   </data>
-  <data name="run_as_admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\run_as_admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_new_relocalize_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_new_relocalize_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

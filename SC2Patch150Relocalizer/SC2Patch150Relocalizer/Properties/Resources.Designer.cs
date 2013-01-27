@@ -201,9 +201,9 @@ namespace SimonsRelocalizer.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap new_relocalize_button {
+        internal static System.Drawing.Bitmap new_new_relocalize_button {
             get {
-                object obj = ResourceManager.GetObject("new_relocalize_button", resourceCulture);
+                object obj = ResourceManager.GetObject("new_new_relocalize_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -309,6 +309,13 @@ namespace SimonsRelocalizer.Properties {
         internal static string showSettingsChinese {
             get {
                 return ResourceManager.GetString("showSettingsChinese", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ui_text {
+            get {
+                object obj = ResourceManager.GetObject("ui_text", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

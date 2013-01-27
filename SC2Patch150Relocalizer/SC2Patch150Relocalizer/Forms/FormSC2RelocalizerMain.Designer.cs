@@ -62,13 +62,14 @@
             this.chkPing = new System.Windows.Forms.CheckBox();
             this.comboRegion = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRelocalize
             // 
             this.buttonRelocalize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.new_relocalize_button;
+            this.buttonRelocalize.Image = global::SimonsRelocalizer.Properties.Resources.new_new_relocalize_button;
             this.buttonRelocalize.Location = new System.Drawing.Point(325, 55);
             this.buttonRelocalize.Name = "buttonRelocalize";
             this.buttonRelocalize.Size = new System.Drawing.Size(190, 161);
@@ -247,7 +248,7 @@
             // label3
             // 
             this.label3.Image = global::SimonsRelocalizer.Properties.Resources.relocalization;
-            this.label3.Location = new System.Drawing.Point(9, 69);
+            this.label3.Location = new System.Drawing.Point(11, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 28);
             this.label3.TabIndex = 25;
@@ -368,11 +369,20 @@
             this.label5.TabIndex = 38;
             this.label5.Text = "Choose Region:";
             // 
+            // label6
+            // 
+            this.label6.Image = global::SimonsRelocalizer.Properties.Resources.ui_text;
+            this.label6.Location = new System.Drawing.Point(11, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 28);
+            this.label6.TabIndex = 39;
+            // 
             // FormSC2RelocalizerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 350);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboRegion);
             this.Controls.Add(this.chkPing);
@@ -441,6 +451,7 @@
         private System.Windows.Forms.ToolStripMenuItem languageChangeToolStrip;
         private System.Windows.Forms.ComboBox comboRegion;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

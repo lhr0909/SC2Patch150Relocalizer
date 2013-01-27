@@ -95,6 +95,7 @@ namespace SimonsRelocalizer
             
             Program.newLocale = LocaleChanger.GetLocaleFromLanguageListItem(Program.languageList[comboLocale.SelectedIndex]);
             comboAsset.SelectedIndex = comboLocale.SelectedIndex;
+            comboRegion.SelectedIndex = 0;
         }
 
         private void comboAsset_SelectedIndexChanged(object sender, EventArgs e)

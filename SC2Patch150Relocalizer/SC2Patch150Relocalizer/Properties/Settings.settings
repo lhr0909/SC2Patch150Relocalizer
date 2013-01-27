@@ -12,10 +12,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="VersionCount" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">15</Value>
+      <Value Profile="(Default)">16</Value>
     </Setting>
     <Setting Name="VersionNumber" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">v1.3.1</Value>
+      <Value Profile="(Default)">v1.3.2</Value>
     </Setting>
     <Setting Name="CheckPing" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

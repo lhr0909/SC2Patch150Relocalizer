@@ -59,6 +59,10 @@ namespace SimonsRelocalizer
 
         public static string GetBattleNetHostname(string region)
         {
+            if (region == null)
+            {
+                return null;
+            }
             if (region.Equals("us"))
             {
                 return "us.logon.battle.net";
