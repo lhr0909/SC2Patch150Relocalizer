@@ -85,7 +85,7 @@ namespace SimonsRelocalizer
 
         public static string GetPingTimeout()
         {
-            if (pingTimeout.Count > 0)
+            if ((pingTimeout != null) && (pingTimeout.Count > 0))
             {
                 return pingTimeout[pingTimeout.Count - 1].ToString() + "ms"; 
             }

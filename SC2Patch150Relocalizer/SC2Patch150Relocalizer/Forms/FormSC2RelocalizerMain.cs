@@ -263,6 +263,13 @@ namespace SimonsRelocalizer
                     comboAsset.SelectedIndex = i;
                 }
             }
+            if (Program.currentRegion == null)
+            {
+                comboRegion.SelectedIndex = 0;
+                Program.currentRegion = Program.currentLocale;
+                Program.newRegion = Program.newLocale;
+                return;
+            }
             if (Program.currentRegion.Equals("us"))
             {
                 comboRegion.SelectedIndex = 1;
