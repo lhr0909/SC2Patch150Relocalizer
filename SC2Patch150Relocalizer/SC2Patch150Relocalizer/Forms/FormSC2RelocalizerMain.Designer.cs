@@ -85,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 123);
+            this.label1.Location = new System.Drawing.Point(50, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 17;
@@ -105,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 78);
+            this.label2.Location = new System.Drawing.Point(50, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 13);
             this.label2.TabIndex = 20;
@@ -130,7 +130,7 @@
             "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
-            this.comboAsset.Location = new System.Drawing.Point(53, 139);
+            this.comboAsset.Location = new System.Drawing.Point(53, 99);
             this.comboAsset.Name = "comboAsset";
             this.comboAsset.Size = new System.Drawing.Size(263, 21);
             this.comboAsset.TabIndex = 21;
@@ -155,7 +155,7 @@
             "KR/TW - 한국어 - koKR",
             "KR/TW - 繁體中文 (Taiwan, tranditional) - zhTW",
             "SEA - English (Singapore) - enSG"});
-            this.comboLocale.Location = new System.Drawing.Point(53, 94);
+            this.comboLocale.Location = new System.Drawing.Point(53, 55);
             this.comboLocale.Name = "comboLocale";
             this.comboLocale.Size = new System.Drawing.Size(263, 21);
             this.comboLocale.TabIndex = 22;
@@ -248,7 +248,7 @@
             // label3
             // 
             this.label3.Image = global::SimonsRelocalizer.Properties.Resources.relocalization;
-            this.label3.Location = new System.Drawing.Point(11, 47);
+            this.label3.Location = new System.Drawing.Point(12, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 28);
             this.label3.TabIndex = 25;
@@ -256,7 +256,7 @@
             // label4
             // 
             this.label4.Image = global::SimonsRelocalizer.Properties.Resources.voice_asset;
-            this.label4.Location = new System.Drawing.Point(14, 132);
+            this.label4.Location = new System.Drawing.Point(11, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 28);
             this.label4.TabIndex = 26;
@@ -354,7 +354,7 @@
             "EU (Europe)",
             "SEA (Southeast Asia + Australia)",
             "KR (Korea + Taiwan)"});
-            this.comboRegion.Location = new System.Drawing.Point(53, 54);
+            this.comboRegion.Location = new System.Drawing.Point(53, 139);
             this.comboRegion.Name = "comboRegion";
             this.comboRegion.Size = new System.Drawing.Size(263, 21);
             this.comboRegion.TabIndex = 37;
@@ -363,7 +363,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 38);
+            this.label5.Location = new System.Drawing.Point(50, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 38;
@@ -372,7 +372,7 @@
             // label6
             // 
             this.label6.Image = global::SimonsRelocalizer.Properties.Resources.ui_text;
-            this.label6.Location = new System.Drawing.Point(11, 87);
+            this.label6.Location = new System.Drawing.Point(12, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 28);
             this.label6.TabIndex = 39;
