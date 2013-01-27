@@ -68,7 +68,14 @@ namespace SimonsRelocalizer
         public static void checkCurrentRegion()
         {
             RegistryKey lastPortal = Registry.CurrentUser.OpenSubKey("Software\\Blizzard Entertainment\\Battle.net\\S2", false);
-            Program.currentRegion = (string) lastPortal.GetValue("LastPortal-" + Program.currentLocale);
+            if (lastPortal == null)
+            {
+                Program.currentRegion = Program.currentLocale;
+            }
+            else
+            {
+                Program.currentRegion = (string)lastPortal.GetValue("LastPortal-" + Program.currentLocale);
+            }
         }
     }
 }
