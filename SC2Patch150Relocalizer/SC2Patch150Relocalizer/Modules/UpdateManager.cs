@@ -15,10 +15,7 @@ namespace SimonsRelocalizer
 
         public static bool CheckIfUpdatesAvailable()
         {
-            var request = WebRequest.Create(url);
-            var response = request.GetResponse();
-            var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
-            var content = reader.ReadToEnd().Split('\n');
+            var content = CheckUpdateFile();
             versionCount = Convert.ToInt32(content[0]);
             versionNumber = content[1];
             downloadURL = content[2];
@@ -29,12 +26,10 @@ namespace SimonsRelocalizer
         {
             if (versionNumber.Length == 0)
             {
-                var request = WebRequest.Create(url);
-                var response = request.GetResponse();
-                var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
-                var content = reader.ReadToEnd().Split('\n');
+                var content = CheckUpdateFile();
                 versionNumber = content[1];
             }
+            
             return versionNumber;
         }
 
@@ -42,13 +37,31 @@ namespace SimonsRelocalizer
         {
             if (versionNumber.Length == 0)
             {
+                var content = CheckUpdateFile();
+                downloadURL = content[2];
+            }
+            return downloadURL;
+        }
+
+        private static string[] CheckUpdateFile()
+        {
+            try
+            {
                 var request = WebRequest.Create(url);
                 var response = request.GetResponse();
                 var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
                 var content = reader.ReadToEnd().Split('\n');
-                downloadURL = content[2];
+                return content;
             }
-            return downloadURL;
+            catch (Exception)
+            {
+                if (url == "http://dl.dropbox.com/u/23413195/versions.txt")
+                {
+                    throw;
+                }
+                url = "http://dl.dropbox.com/u/23413195/versions.txt";
+                return CheckUpdateFile();
+            }
         }
     }
 }

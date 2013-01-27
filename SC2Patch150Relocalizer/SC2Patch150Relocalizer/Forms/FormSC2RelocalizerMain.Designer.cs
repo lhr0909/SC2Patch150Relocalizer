@@ -57,9 +57,6 @@
             this.buttonChangeSC2VariablesLocation = new System.Windows.Forms.Button();
             this.textSC2Location = new System.Windows.Forms.TextBox();
             this.textSC2VariablesLocation = new System.Windows.Forms.TextBox();
-            this.labelPing = new System.Windows.Forms.Label();
-            this.timerCheckPing = new System.Windows.Forms.Timer(this.components);
-            this.chkPing = new System.Windows.Forms.CheckBox();
             this.comboRegion = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -320,30 +317,6 @@
             this.textSC2VariablesLocation.Size = new System.Drawing.Size(321, 20);
             this.textSC2VariablesLocation.TabIndex = 34;
             // 
-            // labelPing
-            // 
-            this.labelPing.AutoSize = true;
-            this.labelPing.Location = new System.Drawing.Point(231, 168);
-            this.labelPing.Name = "labelPing";
-            this.labelPing.Size = new System.Drawing.Size(54, 13);
-            this.labelPing.TabIndex = 35;
-            this.labelPing.Text = "Ping: N/A";
-            // 
-            // timerCheckPing
-            // 
-            this.timerCheckPing.Tick += new System.EventHandler(this.timerCheckPing_Tick);
-            // 
-            // chkPing
-            // 
-            this.chkPing.AutoSize = true;
-            this.chkPing.Location = new System.Drawing.Point(53, 323);
-            this.chkPing.Name = "chkPing";
-            this.chkPing.Size = new System.Drawing.Size(156, 17);
-            this.chkPing.TabIndex = 36;
-            this.chkPing.Text = "Check ping to region server";
-            this.chkPing.UseVisualStyleBackColor = true;
-            this.chkPing.CheckedChanged += new System.EventHandler(this.chkPing_CheckedChanged);
-            // 
             // comboRegion
             // 
             this.comboRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -381,12 +354,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 350);
+            this.ClientSize = new System.Drawing.Size(524, 325);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboRegion);
-            this.Controls.Add(this.chkPing);
-            this.Controls.Add(this.labelPing);
             this.Controls.Add(this.textSC2VariablesLocation);
             this.Controls.Add(this.textSC2Location);
             this.Controls.Add(this.buttonChangeSC2VariablesLocation);
@@ -444,9 +415,6 @@
         private System.Windows.Forms.Button buttonChangeSC2VariablesLocation;
         private System.Windows.Forms.TextBox textSC2Location;
         private System.Windows.Forms.TextBox textSC2VariablesLocation;
-        private System.Windows.Forms.Label labelPing;
-        private System.Windows.Forms.Timer timerCheckPing;
-        private System.Windows.Forms.CheckBox chkPing;
         private System.Windows.Forms.ToolStripMenuItem mITLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageChangeToolStrip;
         private System.Windows.Forms.ComboBox comboRegion;

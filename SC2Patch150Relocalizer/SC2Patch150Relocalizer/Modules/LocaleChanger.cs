@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 using SimonsRelocalizer.Properties;
@@ -10,12 +13,34 @@ namespace SimonsRelocalizer.Modules
     {
         public static void RunRelocalize()
         {
+            SetFolderPermission(Settings.Default.SC2Location);
+            SetFolderPermission(Settings.Default.SC2VariablesLocation);
             AddRegionXML();
             ChangeAgentDB(Program.currentLocale, Program.newLocale);
             ChangeLauncherDB(Program.currentLocale, Program.newLocale);
             ChangeProductSC2Archive(Program.newLocale);
             ChangeVarTXT(Program.currentLocale, Program.currentAsset, Program.newLocale, Program.newAsset);
             ChangeRegion(Program.newLocale, Program.newRegion);
+        }
+
+        public static void SetFolderPermission(string path)
+        {
+            string filePath = path;
+            DirectorySecurity dSecurity = Directory.GetAccessControl(filePath);
+            var username = WindowsIdentity.GetCurrent().Name;
+            FileSystemAccessRule rule = new FileSystemAccessRule(username, FileSystemRights.FullControl, AccessControlType.Allow);
+            dSecurity.SetAccessRule(rule);
+            Directory.SetAccessControl(filePath, dSecurity);
+        }
+
+        private static void SetFilePermission(string path)
+        {
+            string filePath = path;
+            FileSecurity fSecurity = File.GetAccessControl(filePath);
+            var username = WindowsIdentity.GetCurrent().Name;
+            FileSystemAccessRule rule = new FileSystemAccessRule(username, FileSystemRights.FullControl, AccessControlType.Allow);
+            fSecurity.SetAccessRule(rule);
+            File.SetAccessControl(filePath, fSecurity);
         }
 
         private static void ChangeRegion(string locale, string region)
@@ -28,7 +53,11 @@ namespace SimonsRelocalizer.Modules
         {
             var assembly = Assembly.GetExecutingAssembly();
             var filePath = Settings.Default.SC2Location + "regions.xml";
-            if (File.Exists(filePath)) File.Delete(filePath);
+            if (File.Exists(filePath))
+            {
+                SetFilePermission(filePath);
+                File.Delete(filePath);
+            }
             var dest = File.Open(filePath, FileMode.OpenOrCreate);
             var names = assembly.GetManifestResourceNames();
             foreach (string name in names)
@@ -47,6 +76,7 @@ namespace SimonsRelocalizer.Modules
         {
             //Change .agent.db
             var filePath = Settings.Default.SC2Location + ".agent.db";
+            SetFilePermission(filePath);
             //BackupFile(filePath);
             var text = File.ReadAllText(filePath);
             text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
@@ -58,6 +88,7 @@ namespace SimonsRelocalizer.Modules
         {
             //Change Launcher.db
             var filePath = Settings.Default.SC2Location + "Launcher.db";
+            SetFilePermission(filePath);
             //BackupFile(filePath);
             var text = File.ReadAllText(filePath);
             text = CheckAndReplaceTextInFile(originalLanguage, relocalizeLanguage, text);
@@ -72,6 +103,7 @@ namespace SimonsRelocalizer.Modules
 
             var assembly = Assembly.GetExecutingAssembly();
             var filePath = Settings.Default.SC2Location + "Mods\\Core.SC2Mod\\Product.SC2Archive";
+            SetFilePermission(filePath);
             //BackupFile(filePath);
             File.Delete(filePath);
             var dest = File.Open(filePath, FileMode.OpenOrCreate);
@@ -92,6 +124,7 @@ namespace SimonsRelocalizer.Modules
         {
             //change variable.txt
             var sc2VarLocation = Settings.Default.SC2VariablesLocation;
+            SetFilePermission(sc2VarLocation);
             //BackupFile(sc2VarLocation);
             var originalLanguageSearch = "localeiddata=" + originalLanguage;
             var relocalizeLang = "localeiddata=" + relocalizeLanguage; 
@@ -106,6 +139,7 @@ namespace SimonsRelocalizer.Modules
         public static bool CheckIfAssetExists(string asset)
         {
             var filePath = Settings.Default.SC2Location + "Mods\\Core.SC2Mod\\" + asset + ".SC2Data";
+            SetFilePermission(filePath);
             return File.Exists(filePath);
         }
 

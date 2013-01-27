@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Win32;
+using SimonsRelocalizer.Modules;
 using SimonsRelocalizer.Properties;
 
 namespace SimonsRelocalizer
@@ -21,6 +22,7 @@ namespace SimonsRelocalizer
             var location = Program.mainForm.BrowseSc2VarTxtLocation();
             if (location != null)
             {
+                LocaleChanger.SetFolderPermission(location);
                 Settings.Default.SC2VariablesLocation = location + "\\Variables.txt";
                 Settings.Default.Save();
                 CheckVarTxtLocation();
@@ -41,6 +43,7 @@ namespace SimonsRelocalizer
             var location = Program.mainForm.BrowseSc2Location();
             if (location != null)
             {
+                LocaleChanger.SetFolderPermission(location);
                 Settings.Default.SC2Location = location + "\\";
                 Settings.Default.Save();
                 CheckSc2Location();

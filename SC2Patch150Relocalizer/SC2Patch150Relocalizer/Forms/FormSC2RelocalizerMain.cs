@@ -11,7 +11,6 @@ namespace SimonsRelocalizer
         private string relocalizationFinishedMessage = Resources.relocalizationFinishedMessage;
         private string aboutMessage = Resources.aboutMessage;
         private string assetNotFoundMessage = Resources.assetNotFoundMessage;
-        private string checkingPingMessage = Resources.checkingPingMessage;
         private string waitForDownloadMessage = Resources.waitForDownloadMessage;
         private string assetNotFoundHint = Resources.buttonAssetNotFoundHint;
         private string SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessage;
@@ -74,20 +73,10 @@ namespace SimonsRelocalizer
             Settings.Default.Save();
         }
 
-
-        private void chkPing_CheckedChanged(object sender, EventArgs e)
-        {
-            Settings.Default.CheckPing = chkPing.Checked;
-            Settings.Default.Save();
-        }
-
         private void comboRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labelPing.Text = checkingPingMessage;
             Program.newRegion = LocaleChanger.GetRegionFromRegionListItem(Program.regionList[comboRegion.SelectedIndex]);
             Program.pingRegion = LocaleChanger.GetRegionFromRegionListItem(Program.regionList[comboRegion.SelectedIndex]);
-
-            timerCheckPing.Enabled = true;
         }
 
         private void comboLocale_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,18 +152,12 @@ namespace SimonsRelocalizer
         private void timerScrollWindow_Tick(object sender, EventArgs e)
         {
             Size = new System.Drawing.Size(Size.Width, Size.Height + Program.scrollOffset);
-            if ((Size.Height >= 375) || (Size.Height <= 260))
+            if ((Size.Height >= 350) || (Size.Height <= 260))
             {
                 timerScrollWindow.Enabled = false;
                 Program.scrollOffset = -Program.scrollOffset;
                 buttonSettings.Enabled = true;
             }
-        }
-
-        private void timerCheckPing_Tick(object sender, EventArgs e)
-        {
-            CheckAndChangePing(PingChecker.GetBattleNetHostname(Program.pingRegion));
-            timerCheckPing.Enabled = false;
         }
 
         private void buttonChangeSC2Location_Click(object sender, EventArgs e)
@@ -306,18 +289,6 @@ namespace SimonsRelocalizer
         private void ChangeCheckBoxesValues()
         {
             chkLaunchSC2.Checked = Settings.Default.RunSC2AfterRelocalize;
-            chkPing.Checked = Settings.Default.CheckPing;
-        }
-
-        private void CheckAndChangePing(string hostname)
-        {
-            if (!Settings.Default.CheckPing)
-            {
-                labelPing.Text = "Ping: N/A";
-                return;
-            }
-            PingChecker.CheckPing(hostname);
-            labelPing.Text = "Ping: " + PingChecker.GetPingTimeout();
         }
 
         private void mITLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -342,14 +313,12 @@ namespace SimonsRelocalizer
             buttonSettings.Text = "显示设置";
             buttonChangeSC2Location.Text = "更改星际2路径";
             buttonChangeSC2VariablesLocation.Text = "更改variable.txt路径";
-            chkPing.Text = "检查服务器Ping";
             browserSC2Folder.Description = "请选择星际2安装路径：";
             browserSC2VarFolder.Description = "请选择星际2 Variable.txt路径(一般在我的文档\\StarCraft II目录下):";
 
             relocalizationFinishedMessage = Resources.relocalizationFinishedMessageChinese;
             aboutMessage = Resources.aboutMessageChinese;
             assetNotFoundMessage = Resources.assetNotFoundMessageChinese;
-            checkingPingMessage = Resources.checkingPingMessageChinese;
             waitForDownloadMessage = Resources.waitForDownloadMessageChinese;
             assetNotFoundHint = Resources.buttonAssetNotFoundHintChinese;
             SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessageChinese;
@@ -364,7 +333,6 @@ namespace SimonsRelocalizer
         private void ChangeToEnglish()
         {
             Text = "Simon\'s SC2 Patch 1.5.0 Relocalizer ";
-            chkPing.Text = "Check ping to region server";
             buttonChangeSC2VariablesLocation.Text = "Change Variable.txt Location";
             buttonChangeSC2Location.Text = "Change Sc2 Location";
             buttonSettings.Text = "Show Settings";
@@ -385,7 +353,6 @@ namespace SimonsRelocalizer
             relocalizationFinishedMessage = Resources.relocalizationFinishedMessage;
             aboutMessage = Resources.aboutMessage;
             assetNotFoundMessage = Resources.assetNotFoundMessage;
-            checkingPingMessage = Resources.checkingPingMessage;
             waitForDownloadMessage = Resources.waitForDownloadMessage;
             assetNotFoundHint = Resources.buttonAssetNotFoundHint;
             SC2LocationNotFoundMessage = Resources.SC2LocationNotFoundMessage;

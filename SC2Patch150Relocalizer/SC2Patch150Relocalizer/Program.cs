@@ -58,6 +58,7 @@ namespace SimonsRelocalizer
         private static void Main()
         {
             if (IsRunningAsLocalAdmin())
+            //if (true)
             {
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                 Application.ThreadException += Application_ThreadException;
